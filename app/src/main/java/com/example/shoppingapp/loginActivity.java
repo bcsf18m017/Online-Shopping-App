@@ -4,6 +4,7 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.ProgressDialog;
+import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.View;
@@ -11,6 +12,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.example.shoppingapp.Model.Users;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -75,7 +77,20 @@ public class loginActivity extends AppCompatActivity {
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 if(snapshot.child("Users").child(ph).exists())
                 {
-                    
+                    Users userData=snapshot.child("Users").child(ph).getValue(Users.class);
+                    if(userData.getPhone().equals(ph) && userData.getPassword().equals(pwd))
+                    {
+                        Toast.makeText(loginActivity.this, "Logged In Successfully", Toast.LENGTH_SHORT).show();
+                        loadingBar.dismiss();
+                        Intent intent =new Intent(loginActivity.this,Home.class);
+                        startActivity(intent);
+                    }
+                    else
+                    {
+                        Toast.makeText(loginActivity.this, "Invalid Credentials", Toast.LENGTH_SHORT).show();
+                        loadingBar.dismiss();
+                    }
+
                 }
                 else
                 {
