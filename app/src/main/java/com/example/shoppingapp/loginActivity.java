@@ -127,7 +127,7 @@ public class loginActivity extends AppCompatActivity {
                         }
                         else
                         {
-                            Intent intent =new Intent(loginActivity.this,AdminHome.class);
+                            Intent intent =new Intent(loginActivity.this,AdminCategory.class);
                             startActivity(intent);
                         }
                     }

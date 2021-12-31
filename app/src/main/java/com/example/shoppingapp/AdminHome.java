@@ -11,6 +11,9 @@ public class AdminHome extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_admin_home);
-        Toast.makeText(this, "Admin", Toast.LENGTH_SHORT).show();
+
+        String c;
+        c=getIntent().getExtras().get("category").toString();
+        Toast.makeText(this, c, Toast.LENGTH_SHORT).show();
     }
 }
