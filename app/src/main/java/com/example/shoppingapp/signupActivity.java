@@ -66,17 +66,17 @@ public class signupActivity extends AppCompatActivity {
         {
             Toast.makeText(signupActivity.this, "Please Enter Password", Toast.LENGTH_SHORT).show();
         }
-        else if(!pwd.equals(confirmPwd))
+        else if(ph.length()!=11)
         {
-            Toast.makeText(signupActivity.this, "Passwords Don't Match", Toast.LENGTH_SHORT).show();
+            Toast.makeText(signupActivity.this, "Invalid Phone Number", Toast.LENGTH_SHORT).show();
         }
         else if (pwd.length()<5)
         {
             Toast.makeText(signupActivity.this, "Password Length Must be Atleast 5", Toast.LENGTH_SHORT).show();
         }
-        else if(ph.length()!=11)
+        else if(!pwd.equals(confirmPwd))
         {
-            Toast.makeText(signupActivity.this, "Invalid Phone Number", Toast.LENGTH_SHORT).show();
+            Toast.makeText(signupActivity.this, "Passwords Don't Match", Toast.LENGTH_SHORT).show();
         }
         else
         {
@@ -84,13 +84,11 @@ public class signupActivity extends AppCompatActivity {
             loadingBar.setMessage("Please wait while creating account");
             loadingBar.setCanceledOnTouchOutside(false);
             loadingBar.show();
-            validatePhoneNumber(n,ph,pwd,confirmPwd);
+            validateUserAndCreateAccount(n,ph,pwd,confirmPwd);
         }
-
-
     }
 
-    private void validatePhoneNumber(String n, String ph, String pwd, String confirmPwd) {
+    private void validateUserAndCreateAccount(String n, String ph, String pwd, String confirmPwd) {
          final DatabaseReference root;
          root= FirebaseDatabase.getInstance().getReference();
          root.addListenerForSingleValueEvent(new ValueEventListener() {
