@@ -13,16 +13,21 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import com.example.shoppingapp.Model.Users;
+import com.example.shoppingapp.Prevalent.Prevalent;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.rey.material.widget.CheckBox;
+
+import io.paperdb.Paper;
 
 public class loginActivity extends AppCompatActivity {
 
     EditText phone,password;
     Button login;
+    private CheckBox checkBox;
     private ProgressDialog loadingBar;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,6 +39,9 @@ public class loginActivity extends AppCompatActivity {
         password=findViewById(R.id.password);
 
         loadingBar=new ProgressDialog(this);
+
+        checkBox=findViewById(R.id.rememberMeCheckBox);
+        Paper.init(this);
 
         login.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -69,6 +77,7 @@ public class loginActivity extends AppCompatActivity {
     }
 
     private void validateAndLogin(String ph, String pwd) {
+
         final DatabaseReference root;
         root= FirebaseDatabase.getInstance().getReference();
 
@@ -82,6 +91,11 @@ public class loginActivity extends AppCompatActivity {
                     {
                         Toast.makeText(loginActivity.this, "Logged In Successfully", Toast.LENGTH_SHORT).show();
                         loadingBar.dismiss();
+                        if(checkBox.isChecked())
+                        {
+                            Paper.book().write(Prevalent.userPhoneKey,ph);
+                            Paper.book().write(Prevalent.userPasswordKey,pwd);
+                        }
                         Intent intent =new Intent(loginActivity.this,Home.class);
                         startActivity(intent);
                     }
