@@ -11,7 +11,7 @@
         android:id="@+id/app_logo"
         android:layout_width="300dp"
         android:layout_height="100dp"
-        android:layout_marginTop="250dp"
+        android:layout_marginTop="200dp"
         android:layout_centerHorizontal="true"
         android:src="@drawable/applogo" />
 
@@ -88,11 +88,11 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@id/linearLayout"
+        android:layout_marginHorizontal="30dp"
         android:layout_marginTop="10dp"
         android:background="@drawable/button_shape"
         android:padding="10dp"
         android:text="Login"
-        android:layout_marginHorizontal="30dp"
         android:textAllCaps="false"
         android:textColor="@color/white"
         android:textSize="20sp"
