@@ -57,8 +57,16 @@ public class MainActivity extends AppCompatActivity {
 
         if(Paper.book().contains(Prevalent.userPhoneKey))
         {
-            Intent intent=new Intent(MainActivity.this,Home.class);
-            startActivity(intent);
+           if(Paper.book().read("User").toString().equals("Admins"))
+           {
+               Intent intent=new Intent(MainActivity.this,AdminHome.class);
+               startActivity(intent);
+           }
+           else
+           {
+               Intent intent=new Intent(MainActivity.this,Home.class);
+               startActivity(intent);
+           }
         }
     }
 }

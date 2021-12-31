@@ -10,6 +10,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.ShoppingApp">
         <activity
+            android:name=".AdminHome"
+            android:exported="false" />
+        <activity
             android:name=".Home"
             android:exported="false" />
         <activity

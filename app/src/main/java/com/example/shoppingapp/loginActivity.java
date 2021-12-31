@@ -10,6 +10,7 @@ import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.shoppingapp.Model.Users;
@@ -29,6 +30,8 @@ public class loginActivity extends AppCompatActivity {
     Button login;
     private CheckBox checkBox;
     private ProgressDialog loadingBar;
+    private TextView admin,user;
+    String parentDBName="Users";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -37,6 +40,8 @@ public class loginActivity extends AppCompatActivity {
         login=findViewById(R.id.login);
         phone=findViewById(R.id.phoneNumber);
         password=findViewById(R.id.password);
+        admin=findViewById(R.id.adminLink);
+        user=findViewById(R.id.clientLink);
 
         loadingBar=new ProgressDialog(this);
 
@@ -47,6 +52,23 @@ public class loginActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 validateUser();
+            }
+        });
+
+        admin.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                admin.setVisibility(View.INVISIBLE);
+                user.setVisibility(View.VISIBLE);
+                parentDBName="Admins";
+            }
+        });
+        user.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                admin.setVisibility(View.VISIBLE);
+                user.setVisibility(View.INVISIBLE);
+                parentDBName="Users";
             }
         });
     }
@@ -84,20 +106,30 @@ public class loginActivity extends AppCompatActivity {
         root.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
-                if(snapshot.child("Users").child(ph).exists())
+                if(snapshot.child(parentDBName).child(ph).exists())
                 {
-                    Users userData=snapshot.child("Users").child(ph).getValue(Users.class);
+                    Users userData=snapshot.child(parentDBName).child(ph).getValue(Users.class);
                     if(userData.getPhone().equals(ph) && userData.getPassword().equals(pwd))
                     {
                         Toast.makeText(loginActivity.this, "Logged In Successfully", Toast.LENGTH_SHORT).show();
                         loadingBar.dismiss();
                         if(checkBox.isChecked())
                         {
+                            Paper.book().write("User",parentDBName);
                             Paper.book().write(Prevalent.userPhoneKey,ph);
                             Paper.book().write(Prevalent.userPasswordKey,pwd);
                         }
-                        Intent intent =new Intent(loginActivity.this,Home.class);
-                        startActivity(intent);
+                        if(parentDBName.equals("Users"))
+                        {
+
+                            Intent intent =new Intent(loginActivity.this,Home.class);
+                            startActivity(intent);
+                        }
+                        else
+                        {
+                            Intent intent =new Intent(loginActivity.this,AdminHome.class);
+                            startActivity(intent);
+                        }
                     }
                     else
                     {
