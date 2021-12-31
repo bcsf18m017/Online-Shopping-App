@@ -10,6 +10,12 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.ShoppingApp">
         <activity
+            android:name=".signupActivity"
+            android:exported="false" />
+        <activity
+            android:name=".loginActivity"
+            android:exported="false" />
+        <activity
             android:name=".MainActivity"
             android:exported="true">
             <intent-filter>
