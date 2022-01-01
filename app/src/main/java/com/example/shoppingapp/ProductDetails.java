@@ -15,6 +15,7 @@ public class ProductDetails extends AppCompatActivity {
     ImageView productImage;
     ElegantNumberButton counter;
     TextView name,price,description;
+    private String productID="";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -27,6 +28,7 @@ public class ProductDetails extends AppCompatActivity {
         price=findViewById(R.id.product_detail_price);
         cart=findViewById(R.id.cart_button);
 
+        productID=getIntent().getStringExtra("pid"); 
 
     }
 }
