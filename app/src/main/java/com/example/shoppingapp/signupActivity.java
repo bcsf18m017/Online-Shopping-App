@@ -25,7 +25,7 @@ import java.util.HashMap;
 public class signupActivity extends AppCompatActivity {
 
     Button signUp;
-    EditText name,phone,password,confirmPassword;
+    EditText name,phone,password,confirmPassword,address;
     private ProgressDialog loadingBar;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,6 +37,7 @@ public class signupActivity extends AppCompatActivity {
         phone=findViewById(R.id.reg_phoneNumber);
         password=findViewById(R.id.reg_password);
         confirmPassword=findViewById(R.id.reg_confirm_password);
+        address=findViewById(R.id.reg_address);
 
         loadingBar=new ProgressDialog(this);
         signUp.setOnClickListener(new View.OnClickListener() {
@@ -53,6 +54,7 @@ public class signupActivity extends AppCompatActivity {
         String ph=phone.getText().toString();
         String pwd=password.getText().toString();
         String confirmPwd=confirmPassword.getText().toString();
+        String addressText=address.getText().toString();
 
         if(TextUtils.isEmpty(n))
         {
@@ -65,6 +67,10 @@ public class signupActivity extends AppCompatActivity {
         else if(TextUtils.isEmpty(pwd))
         {
             Toast.makeText(signupActivity.this, "Please Enter Password", Toast.LENGTH_SHORT).show();
+        }
+        else if(TextUtils.isEmpty(addressText))
+        {
+            Toast.makeText(signupActivity.this, "Please Enter Address", Toast.LENGTH_SHORT).show();
         }
         else if(ph.length()!=11)
         {
@@ -84,11 +90,11 @@ public class signupActivity extends AppCompatActivity {
             loadingBar.setMessage("Please wait while creating account");
             loadingBar.setCanceledOnTouchOutside(false);
             loadingBar.show();
-            validateUserAndCreateAccount(n,ph,pwd,confirmPwd);
+            validateUserAndCreateAccount(n,ph,pwd,addressText);
         }
     }
 
-    private void validateUserAndCreateAccount(String n, String ph, String pwd, String confirmPwd) {
+    private void validateUserAndCreateAccount(String n, String ph, String pwd, String addressText) {
          final DatabaseReference root;
          root= FirebaseDatabase.getInstance().getReference();
          root.addListenerForSingleValueEvent(new ValueEventListener() {

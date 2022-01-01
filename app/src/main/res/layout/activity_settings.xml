@@ -49,14 +49,13 @@
         </com.google.android.material.appbar.AppBarLayout>
 
         <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/setting_image"
             android:layout_width="130dp"
             android:layout_height="130dp"
-            android:id="@+id/setting_image"
-            android:src="@drawable/profile"
             android:layout_below="@id/appBarSettings"
-            android:layout_marginTop="150dp"
             android:layout_centerHorizontal="true"
-            />
+            android:layout_marginTop="50dp"
+            android:src="@drawable/profile" />
         <TextView
             android:id="@+id/setting_image_change"
             android:layout_width="wrap_content"
@@ -67,17 +66,17 @@
             android:textSize="24sp"
             android:layout_centerHorizontal="true"
             android:layout_marginTop="10dp"/>
+
         <EditText
+            android:id="@+id/setting_phone"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/setting_phone"
-            android:padding="15dp"
             android:layout_below="@id/setting_image_change"
-            android:layout_marginTop="15dp"
-            android:text="Phone Number"
-            android:background="@drawable/input_shape"
             android:layout_marginHorizontal="50dp"
-            />
+            android:layout_marginTop="15dp"
+            android:background="@drawable/input_shape"
+            android:padding="15dp"
+            android:hint="Phone Number" />
         <EditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -85,7 +84,7 @@
             android:padding="15dp"
             android:layout_below="@id/setting_phone"
             android:layout_marginTop="15dp"
-            android:text="Full Name"
+            android:hint="Full Name"
             android:background="@drawable/input_shape"
             android:layout_marginHorizontal="50dp"
             />
@@ -96,7 +95,7 @@
             android:padding="15dp"
             android:layout_below="@id/setting_name"
             android:layout_marginTop="15dp"
-            android:text="Address"
+            android:hint="Address"
             android:background="@drawable/input_shape"
             android:layout_marginHorizontal="50dp"
             />

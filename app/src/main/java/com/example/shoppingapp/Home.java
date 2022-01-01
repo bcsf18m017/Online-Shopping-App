@@ -46,7 +46,7 @@ public class Home extends AppCompatActivity implements NavigationView.OnNavigati
     private ActivityHomeBinding binding;
     private RecyclerView recyclerView;
     RecyclerView.LayoutManager layoutManager;
-    String user;
+    String user,phoneReceived,addressReceived,imageReceived;
     private  DatabaseReference productsRef;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -56,6 +56,10 @@ public class Home extends AppCompatActivity implements NavigationView.OnNavigati
         setContentView(binding.getRoot());
 
         user=getIntent().getExtras().get("Username").toString();
+        phoneReceived=getIntent().getExtras().get("phone").toString();
+        imageReceived=getIntent().getExtras().get("image").toString();
+        addressReceived=getIntent().getExtras().get("address").toString();
+
         productsRef= FirebaseDatabase.getInstance().getReference().child("Products");
 
         recyclerView=findViewById(R.id.recycler_view);
@@ -145,6 +149,10 @@ public class Home extends AppCompatActivity implements NavigationView.OnNavigati
         else if(id==R.id.nav_settings)
         {
             Intent intent=new Intent(Home.this,Settings.class);
+            intent.putExtra("Username",user);
+            intent.putExtra("phone",phoneReceived);
+            intent.putExtra("image",imageReceived);
+            intent.putExtra("address",addressReceived);
             startActivity(intent);
         }
 
