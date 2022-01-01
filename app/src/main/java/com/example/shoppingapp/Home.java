@@ -2,16 +2,22 @@ package com.example.shoppingapp;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.Menu;
+import android.view.ViewGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.widget.Toolbar;
 
+import com.example.shoppingapp.Model.Product;
 import com.example.shoppingapp.Prevalent.Prevalent;
+import com.example.shoppingapp.ViewHolder.ProductViewHolder;
+import com.firebase.ui.database.FirebaseRecyclerAdapter;
+import com.firebase.ui.database.FirebaseRecyclerOptions;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.snackbar.Snackbar;
 import com.google.android.material.navigation.NavigationView;
@@ -23,8 +29,13 @@ import androidx.navigation.ui.AppBarConfiguration;
 import androidx.navigation.ui.NavigationUI;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.shoppingapp.databinding.ActivityHomeBinding;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.squareup.picasso.Picasso;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 import io.paperdb.Paper;
@@ -33,13 +44,24 @@ public class Home extends AppCompatActivity implements NavigationView.OnNavigati
 
     private AppBarConfiguration mAppBarConfiguration;
     private ActivityHomeBinding binding;
+    private RecyclerView recyclerView;
+    RecyclerView.LayoutManager layoutManager;
 
+    private  DatabaseReference productsRef;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
         binding = ActivityHomeBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
+
+        productsRef= FirebaseDatabase.getInstance().getReference().child("Products");
+
+        recyclerView=findViewById(R.id.recycler_view);
+        recyclerView.setHasFixedSize(true);
+        layoutManager=new LinearLayoutManager(this);
+        recyclerView.setLayoutManager(layoutManager);
+
 
         Paper.init(this);
         Toolbar toolbar=findViewById(R.id.toolbar);
@@ -72,6 +94,9 @@ public class Home extends AppCompatActivity implements NavigationView.OnNavigati
         TextView userName=headerView.findViewById(R.id.user_name);
         CircleImageView userImage=headerView.findViewById(R.id.user_image);
         userName.setText(Prevalent.currentUser.getName());
+
+
+
     }
 
     @Override
@@ -141,5 +166,37 @@ public class Home extends AppCompatActivity implements NavigationView.OnNavigati
         DrawerLayout drawer=findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
         return true;
+    }
+
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+
+        FirebaseRecyclerOptions<Product>options=new FirebaseRecyclerOptions.Builder<Product>()
+                .setQuery(productsRef,Product.class)
+                .build();
+
+        FirebaseRecyclerAdapter<Product, ProductViewHolder>adapter=
+                new FirebaseRecyclerAdapter<Product, ProductViewHolder>(options) {
+            @Override
+            protected void onBindViewHolder(@NonNull ProductViewHolder holder, int position, @NonNull Product model) {
+
+                holder.name.setText(model.getName());
+                holder.description.setText(model.getDescription());
+                holder.price.setText(model.getPrice()+"$");
+                Picasso.get().load(model.getImage()).into(holder.image);
+            }
+
+            @NonNull
+            @Override
+            public ProductViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+                View view= LayoutInflater.from(parent.getContext()).inflate(R.layout.item_layout,parent,false);
+                ProductViewHolder holder=new ProductViewHolder(view);
+                return holder;
+            }
+        };
+        recyclerView.setAdapter(adapter);
+        adapter.startListening();
     }
 }
