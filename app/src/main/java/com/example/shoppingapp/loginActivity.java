@@ -117,6 +117,7 @@ public class loginActivity extends AppCompatActivity {
                         if(checkBox.isChecked())
                         {
                             Paper.book().write("User",parentDBName);
+                            Paper.book().write("Username",userData.getName());
                             Paper.book().write(Prevalent.userPhoneKey,ph);
                             Paper.book().write(Prevalent.userPasswordKey,pwd);
                         }

@@ -33,7 +33,7 @@ import java.util.HashMap;
 
 public class AdminHome extends AppCompatActivity {
 
-    String category,nameText,descriptionText,priceText,date,time,productKey,downloadImageUrl;
+    String category,nameText,descriptionText,priceText,date,time,productKey,downloadImageUrl,user;
     Button add;
     EditText name,price,description;
     ImageView productImage;
@@ -48,6 +48,7 @@ public class AdminHome extends AppCompatActivity {
         setContentView(R.layout.activity_admin_home);
 
         category=getIntent().getExtras().get("category").toString();
+        user=getIntent().getExtras().get("Username").toString();
 
         add=findViewById(R.id.addProduct_Button);
         name=findViewById(R.id.product_name);

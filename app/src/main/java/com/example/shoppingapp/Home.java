@@ -46,7 +46,7 @@ public class Home extends AppCompatActivity implements NavigationView.OnNavigati
     private ActivityHomeBinding binding;
     private RecyclerView recyclerView;
     RecyclerView.LayoutManager layoutManager;
-
+    String user;
     private  DatabaseReference productsRef;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -55,6 +55,7 @@ public class Home extends AppCompatActivity implements NavigationView.OnNavigati
         binding = ActivityHomeBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
+        user=getIntent().getExtras().get("Username").toString();
         productsRef= FirebaseDatabase.getInstance().getReference().child("Products");
 
         recyclerView=findViewById(R.id.recycler_view);
@@ -93,10 +94,7 @@ public class Home extends AppCompatActivity implements NavigationView.OnNavigati
         View headerView=navigationView.getHeaderView(0);
         TextView userName=headerView.findViewById(R.id.user_name);
         CircleImageView userImage=headerView.findViewById(R.id.user_image);
-        userName.setText(Prevalent.currentUser.getName());
-
-
-
+        userName.setText(user);
     }
 
     @Override

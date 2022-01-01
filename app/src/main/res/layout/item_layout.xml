@@ -5,7 +5,7 @@
     android:layout_marginTop="20dp"
     android:layout_marginHorizontal="15dp"
     android:elevation="60dp"
-    android:background="@drawable/white">
+    android:background="@drawable/input_shape">
 
     <RelativeLayout
         android:layout_width="match_parent"
