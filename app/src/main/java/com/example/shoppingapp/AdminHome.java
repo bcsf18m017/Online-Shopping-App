@@ -48,7 +48,6 @@ public class AdminHome extends AppCompatActivity {
         setContentView(R.layout.activity_admin_home);
 
         category=getIntent().getExtras().get("category").toString();
-        user=getIntent().getExtras().get("Username").toString();
 
         add=findViewById(R.id.addProduct_Button);
         name=findViewById(R.id.product_name);
@@ -161,7 +160,7 @@ public class AdminHome extends AppCompatActivity {
     private void saveProductInfo() {
 
         HashMap<String,Object> map=new HashMap<>();
-        map.put("productID",productKey);
+        map.put("ProductID",productKey);
         map.put("Date",date);
         map.put("Time",time);
         map.put("Description",descriptionText);
@@ -188,7 +187,6 @@ public class AdminHome extends AppCompatActivity {
                         }
                     }
                 });
-
     }
 
     private void openGallery() {

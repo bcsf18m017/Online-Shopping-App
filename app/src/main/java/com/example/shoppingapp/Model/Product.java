@@ -1,14 +1,14 @@
 package com.example.shoppingapp.Model;
 
 public class Product {
-    private String productID,Category,Name,Description,Image,Date,Price,Time;
+    private String Category,Name,Description,Image,Date,Price,Time,ProductID;
 
 
     public Product()
     {}
 
-    public Product(String pid,String category, String name, String description, String image, String date, String price, String time) {
-        productID=pid;
+    public Product(String category, String name, String description, String image, String date, String price, String time,String productID) {
+        ProductID=productID;
         Category = category;
         Name = name;
         Description = description;
@@ -19,11 +19,11 @@ public class Product {
     }
 
     public String getPid() {
-        return productID;
+        return ProductID;
     }
 
     public void setPid(String pid) {
-        this.productID = pid;
+        this.ProductID = pid;
     }
 
     public String getCategory() {
