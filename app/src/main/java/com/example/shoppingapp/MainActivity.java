@@ -59,7 +59,7 @@ public class MainActivity extends AppCompatActivity {
         {
            if(Paper.book().read("User").toString().equals("Admins"))
            {
-               Intent intent=new Intent(MainActivity.this,AdminHome.class);
+               Intent intent=new Intent(MainActivity.this,AdminCategory.class);
                startActivity(intent);
            }
            else
