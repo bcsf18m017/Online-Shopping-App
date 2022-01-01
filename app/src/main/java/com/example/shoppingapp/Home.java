@@ -5,11 +5,13 @@ import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.Menu;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.widget.Toolbar;
 
+import com.example.shoppingapp.Prevalent.Prevalent;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.snackbar.Snackbar;
 import com.google.android.material.navigation.NavigationView;
@@ -24,6 +26,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.shoppingapp.databinding.ActivityHomeBinding;
 
+import de.hdodenhof.circleimageview.CircleImageView;
 import io.paperdb.Paper;
 
 public class Home extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener{
@@ -63,6 +66,12 @@ public class Home extends AppCompatActivity implements NavigationView.OnNavigati
         NavigationUI.setupActionBarWithNavController(this, navController, mAppBarConfiguration);
         NavigationUI.setupWithNavController(navigationView, navController);
         navigationView.setNavigationItemSelectedListener(this);
+
+
+        View headerView=navigationView.getHeaderView(0);
+        TextView userName=headerView.findViewById(R.id.user_name);
+        CircleImageView userImage=headerView.findViewById(R.id.user_image);
+        userName.setText(Prevalent.currentUser.getName());
     }
 
     @Override

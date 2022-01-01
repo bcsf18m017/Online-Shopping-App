@@ -113,6 +113,7 @@ public class loginActivity extends AppCompatActivity {
                     {
                         Toast.makeText(loginActivity.this, "Logged In Successfully", Toast.LENGTH_SHORT).show();
                         loadingBar.dismiss();
+                        Prevalent.currentUser=userData;
                         if(checkBox.isChecked())
                         {
                             Paper.book().write("User",parentDBName);
