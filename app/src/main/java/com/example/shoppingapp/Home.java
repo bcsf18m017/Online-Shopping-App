@@ -48,6 +48,7 @@ public class Home extends AppCompatActivity implements NavigationView.OnNavigati
     RecyclerView.LayoutManager layoutManager;
     String user,phoneReceived,addressReceived,imageReceived;
     private  DatabaseReference productsRef;
+    CircleImageView imageView;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -67,6 +68,12 @@ public class Home extends AppCompatActivity implements NavigationView.OnNavigati
         layoutManager=new LinearLayoutManager(this);
         recyclerView.setLayoutManager(layoutManager);
 
+        imageView=findViewById(R.id.user_image);
+
+//        if(!imageReceived.equals(""))
+//        {
+//            Picasso.get().load(imageReceived).placeholder(R.drawable.profile).into(imageView);
+//        }
 
         Paper.init(this);
         Toolbar toolbar=findViewById(R.id.toolbar);

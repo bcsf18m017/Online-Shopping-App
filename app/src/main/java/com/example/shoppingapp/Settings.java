@@ -58,6 +58,7 @@ public class Settings extends AppCompatActivity {
         change=findViewById(R.id.setting_image_change);
         close=findViewById(R.id.setting_close);
         update=findViewById(R.id.setting_update);
+        phone.setEnabled(false);
 
         receivedName=getIntent().getExtras().get("Username").toString();
         receivedPhone=getIntent().getExtras().get("phone").toString();
@@ -117,7 +118,7 @@ public class Settings extends AppCompatActivity {
     }
 
     private void updateOnlyUserInfo() {
-        String textName=receivedName,textAddress=receivedAddress,textPhone=receivedPhone;
+        String textName=receivedName,textAddress=receivedAddress;
         if(!TextUtils.isEmpty(name.getText().toString()))
         {
             textName=name.getText().toString();
@@ -126,17 +127,17 @@ public class Settings extends AppCompatActivity {
         {
             textAddress=address.getText().toString();
         }
-        if(!(phone.getText().toString().equals(receivedPhone)))
-        {
-           textPhone=phone.getText().toString();
-        }
         DatabaseReference ref=FirebaseDatabase.getInstance().getReference().child("Users");
         HashMap<String,Object>map=new HashMap<>();
         map.put("name",textName);
-        map.put("phone",textPhone);
         map.put("address",textAddress);
         ref.child(receivedPhone).updateChildren(map);
-        startActivity(new Intent(Settings.this,Home.class));
+        Intent intent=new Intent(Settings.this,Home.class);
+        intent.putExtra("Username",textName);
+        intent.putExtra("phone",receivedPhone);
+        intent.putExtra("image",receivedImage);
+        intent.putExtra("address",textAddress);
+        startActivity(intent);
         Toast.makeText(Settings.this,"Updated Sucessfully",Toast.LENGTH_SHORT).show();
         finish();
     }
@@ -149,10 +150,6 @@ public class Settings extends AppCompatActivity {
         else if(TextUtils.isEmpty(address.getText().toString()))
         {
             Toast.makeText(Settings.this, "Address is mandatory", Toast.LENGTH_SHORT).show();
-        }
-        else if(TextUtils.isEmpty(phone.getText().toString()))
-        {
-            Toast.makeText(Settings.this, "Phone is mandatory", Toast.LENGTH_SHORT).show();
         }
         else if(checker.equals("clicked"))
         {
@@ -190,13 +187,17 @@ public class Settings extends AppCompatActivity {
                         DatabaseReference ref=FirebaseDatabase.getInstance().getReference().child("Users");
                         HashMap<String,Object>map=new HashMap<>();
                         map.put("name",name.getText().toString());
-                        map.put("phone",phone.getText().toString());
                         map.put("address",address.getText().toString());
                         map.put("image",URL);
                         ref.child(receivedPhone).updateChildren(map);
                         loadingBar.dismiss();
-                        startActivity(new Intent(Settings.this,Home.class));
-                        Toast.makeText(Settings.this,"Updated Sucessfully",Toast.LENGTH_SHORT).show();
+                        Intent intent=new Intent(Settings.this,Home.class);
+                        intent.putExtra("Username",name.getText().toString());
+                        intent.putExtra("phone",phone.getText().toString());
+                        intent.putExtra("image",URL);
+                        intent.putExtra("address",address.getText().toString());
+                        startActivity(intent);
+                        Toast.makeText(Settings.this,"Updated Successfully",Toast.LENGTH_SHORT).show();
                         finish();
                     }
                     else
