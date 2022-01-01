@@ -106,6 +106,7 @@ public class signupActivity extends AppCompatActivity {
                      userDataMap.put("name",n);
                      userDataMap.put("phone",ph);
                      userDataMap.put("password",pwd);
+                     userDataMap.put("address",addressText);
 
                      root.child("Users").child(ph).updateChildren(userDataMap)
                              .addOnCompleteListener(new OnCompleteListener<Void>() {

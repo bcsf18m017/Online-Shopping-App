@@ -118,8 +118,6 @@ public class Settings extends AppCompatActivity {
 
     private void updateOnlyUserInfo() {
         String textName=receivedName,textAddress=receivedAddress,textPhone=receivedPhone;
-        Toast.makeText(Settings.this,receivedPhone,Toast.LENGTH_SHORT).show();
-
         if(!TextUtils.isEmpty(name.getText().toString()))
         {
             textName=name.getText().toString();
@@ -132,14 +130,13 @@ public class Settings extends AppCompatActivity {
         {
            textPhone=phone.getText().toString();
         }
-        Toast.makeText(Settings.this, phone.getText().toString(), Toast.LENGTH_SHORT).show();
         DatabaseReference ref=FirebaseDatabase.getInstance().getReference().child("Users");
         HashMap<String,Object>map=new HashMap<>();
         map.put("name",textName);
         map.put("phone",textPhone);
         map.put("address",textAddress);
         ref.child(receivedPhone).updateChildren(map);
-        startActivity(new Intent(Settings.this,MainActivity.class));
+        startActivity(new Intent(Settings.this,Home.class));
         Toast.makeText(Settings.this,"Updated Sucessfully",Toast.LENGTH_SHORT).show();
         finish();
     }
@@ -198,7 +195,7 @@ public class Settings extends AppCompatActivity {
                         map.put("image",URL);
                         ref.child(receivedPhone).updateChildren(map);
                         loadingBar.dismiss();
-                        startActivity(new Intent(Settings.this,MainActivity.class));
+                        startActivity(new Intent(Settings.this,Home.class));
                         Toast.makeText(Settings.this,"Updated Sucessfully",Toast.LENGTH_SHORT).show();
                         finish();
                     }
