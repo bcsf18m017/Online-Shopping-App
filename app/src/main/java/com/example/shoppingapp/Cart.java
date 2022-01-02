@@ -33,6 +33,7 @@ public class Cart extends AppCompatActivity {
     private Button next;
     private TextView total;
     private String receivedPhone,receivedAddress,receivedImage,receivedName;
+    int totalPrice=0;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -52,6 +53,15 @@ public class Cart extends AppCompatActivity {
         receivedImage=getIntent().getStringExtra("image");
         receivedAddress=getIntent().getStringExtra("address");
         receivedName=getIntent().getStringExtra("username");
+        next.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent=new Intent(Cart.this,ConfirmOrder.class);
+                intent.putExtra("Total",String.valueOf(totalPrice));
+                startActivity(intent);
+                finish();
+            }
+        });
     }
 
     @Override
@@ -69,6 +79,10 @@ public class Cart extends AppCompatActivity {
                 holder.itemPrice.setText(model.getPrice());
                 holder.itemQuantity.setText(model.getQuantity());
                 Picasso.get().load(model.getImage()).into(holder.itemImage);
+                int tempPrice=(Integer.parseInt(model.getPrice()))*(Integer.parseInt(model.getQuantity()));
+
+                totalPrice=totalPrice+tempPrice;
+                total.setText("Total Price ="+String.valueOf(totalPrice)+"$");
 
                 holder.itemView.setOnClickListener(new View.OnClickListener() {
                     @Override
@@ -125,5 +139,6 @@ public class Cart extends AppCompatActivity {
         };
         recyclerView.setAdapter(adapter);
         adapter.startListening();
+
     }
 }
