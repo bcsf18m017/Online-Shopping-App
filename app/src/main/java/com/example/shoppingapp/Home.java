@@ -85,8 +85,12 @@ public class Home extends AppCompatActivity implements NavigationView.OnNavigati
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
+               Intent intent=new Intent(Home.this,Cart.class);
+                intent.putExtra("phone",phoneReceived);
+                intent.putExtra("image",imageReceived);
+                intent.putExtra("address",addressReceived);
+                intent.putExtra("username",user);
+                startActivity(intent);
             }
         });
         DrawerLayout drawer = binding.drawerLayout;
@@ -147,7 +151,12 @@ public class Home extends AppCompatActivity implements NavigationView.OnNavigati
         int id=item.getItemId();
         if(id==R.id.nav_cart)
         {
-
+            Intent intent=new Intent(Home.this,Cart.class);
+            intent.putExtra("phone",phoneReceived);
+            intent.putExtra("image",imageReceived);
+            intent.putExtra("address",addressReceived);
+            intent.putExtra("username",user);
+            startActivity(intent);
         }
         else if(id==R.id.nav_orders)
         {
