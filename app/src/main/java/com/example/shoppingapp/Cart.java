@@ -58,6 +58,10 @@ public class Cart extends AppCompatActivity {
             public void onClick(View v) {
                 Intent intent=new Intent(Cart.this,ConfirmOrder.class);
                 intent.putExtra("Total",String.valueOf(totalPrice));
+                intent.putExtra("username",receivedName);
+                intent.putExtra("phone",receivedPhone);
+                intent.putExtra("image",receivedImage);
+                intent.putExtra("address",receivedAddress);
                 startActivity(intent);
                 finish();
             }
