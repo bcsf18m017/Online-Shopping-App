@@ -112,7 +112,12 @@ public class Settings extends AppCompatActivity {
         else
         {
             Toast.makeText(Settings.this, "Error..!! Try Again", Toast.LENGTH_SHORT).show();
-            startActivity(new Intent(Settings.this,Settings.class));
+            Intent intent=new Intent(Settings.this,Settings.class);
+            intent.putExtra("Username",receivedName);
+            intent.putExtra("phone",receivedPhone);
+            intent.putExtra("image",receivedImage);
+            intent.putExtra("address",receivedAddress);
+            startActivity(intent);
             finish();
         }
     }
