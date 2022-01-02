@@ -37,17 +37,6 @@
             android:textStyle="italic"
             android:id="@+id/productPrice"
             android:textColor="@color/pink"/>
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Product Description"
-            android:textAlignment="center"
-            android:layout_below="@id/productPrice"
-            android:textSize="20sp"
-            android:textStyle="italic"
-            android:id="@+id/productDescription"
-            android:textColor="@color/pink"/>
-
 
 
     </RelativeLayout>

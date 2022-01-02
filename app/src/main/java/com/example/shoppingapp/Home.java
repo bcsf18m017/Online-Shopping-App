@@ -198,7 +198,6 @@ public class Home extends AppCompatActivity implements NavigationView.OnNavigati
             protected void onBindViewHolder(@NonNull ProductViewHolder holder, int position, @NonNull Product model) {
 
                 holder.name.setText(model.getName());
-                holder.description.setText(model.getDescription());
                 holder.price.setText(model.getPrice()+"$");
 
                 Picasso.get().load(model.getImage()).into(holder.image);
