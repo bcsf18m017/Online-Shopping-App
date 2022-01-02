@@ -119,14 +119,13 @@ public class loginActivity extends AppCompatActivity {
                             Paper.book().write("User",parentDBName);
                             Paper.book().write("Username",userData.getName());
                             Paper.book().write("Phone",userData.getPhone());
-                            Paper.book().write("Image",userData.getImage()==null?"":userData.getImage());
-                            Paper.book().write("Address", userData.getAddress());
                             Paper.book().write(Prevalent.userPhoneKey,ph);
                             Paper.book().write(Prevalent.userPasswordKey,pwd);
+                            Paper.book().write("Image",userData.getImage()==null?"":userData.getImage());
+                            Paper.book().write("Address", userData.getAddress()==null?"":userData.getAddress());
                         }
                         if(parentDBName.equals("Users"))
                         {
-
                             Intent intent =new Intent(loginActivity.this,Home.class);
                             intent.putExtra("Username",userData.getName());
                             intent.putExtra("phone",userData.getPhone());

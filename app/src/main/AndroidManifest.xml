@@ -15,6 +15,9 @@
         android:theme="@style/Theme.ShoppingApp"
         tools:replace="android:theme">
         <activity
+            android:name=".AdminNewOrder"
+            android:exported="false" />
+        <activity
             android:name=".ConfirmOrder"
             android:exported="false" />
         <activity

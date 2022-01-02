@@ -5,13 +5,17 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ImageView;
+
+import io.paperdb.Paper;
 
 public class AdminCategory extends AppCompatActivity {
 
     private ImageView tShirts,sports,femaleDresses,sweaters
             ,glasses,hats,purses,shoes
             ,laptops,headphones,mobiles,watches;
+    private Button logout,checkOrder;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -29,6 +33,28 @@ public class AdminCategory extends AppCompatActivity {
         headphones=findViewById(R.id.headphones);
         mobiles=findViewById(R.id.mobiles);
         watches=findViewById(R.id.wathces);
+
+
+        logout=findViewById(R.id.admin_logout);
+        checkOrder=findViewById(R.id.check_new_order);
+        logout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Paper.book().destroy();
+                Intent intent=new Intent(AdminCategory.this,MainActivity.class);
+                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                startActivity(intent);
+                finish();
+            }
+        });
+        checkOrder.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent=new Intent(AdminCategory.this,AdminNewOrder.class);
+                startActivity(intent);
+            }
+        });
+
 
         tShirts.setOnClickListener(new View.OnClickListener() {
             @Override
