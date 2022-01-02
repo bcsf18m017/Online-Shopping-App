@@ -34,7 +34,7 @@ public class ProductDetails extends AppCompatActivity {
     ElegantNumberButton counter;
     TextView name,price,description;
     Button addToCart;
-    private String productID="",receivedPhone,receivedAddress,receivedImage,receivedName;
+    private String productID="",receivedPhone,receivedAddress,receivedImage,receivedName,state="normal";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -57,10 +57,19 @@ public class ProductDetails extends AppCompatActivity {
 
         getProductDetails(productID);
 
+       // checkOrderStat();
         addToCart.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                addingToCartList();
+                if(state.equals("Order Shipped"))
+                {
+                    Toast.makeText(ProductDetails.this, "You Can Purchase More Products Once You Will Receive Your Order"
+                            , Toast.LENGTH_LONG).show();
+                }
+                else
+                {
+                    addingToCartList();
+                }
 
             }
         });
@@ -115,9 +124,6 @@ public class ProductDetails extends AppCompatActivity {
                         }
                     }
                 });
-
-
-
     }
 
     private void getProductDetails(String productID) {
@@ -142,5 +148,37 @@ public class ProductDetails extends AppCompatActivity {
             }
         });
 
+    }
+    private void checkOrderStat()
+    {
+        DatabaseReference orderRef=FirebaseDatabase.getInstance().getReference().child("Orders").child(receivedPhone);
+        orderRef.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                if(snapshot.exists())
+                {
+                    String state=snapshot.child("State").getValue().toString();
+                    if(state.equals("Not Shipped"))
+                    {
+                        state="Order Placed";
+                    }
+                    else
+                    {
+                        state="Order Shipped";
+                    }
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+        checkOrderStat();
     }
 }
