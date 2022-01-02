@@ -207,6 +207,10 @@ public class Home extends AppCompatActivity implements NavigationView.OnNavigati
                     public void onClick(View v) {
                         Intent intent=new Intent(Home.this,ProductDetails.class);
                         intent.putExtra("pid",model.getDate()+model.getTime());
+                        intent.putExtra("phone",phoneReceived);
+                        intent.putExtra("image",imageReceived);
+                        intent.putExtra("address",addressReceived);
+                        intent.putExtra("username",user);
                         startActivity(intent);
                     }
                 });

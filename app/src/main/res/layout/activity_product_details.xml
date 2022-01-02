@@ -9,13 +9,13 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
+
         <ImageView
             android:id="@+id/product_detail_image"
             android:layout_width="match_parent"
             android:layout_height="260dp"
-            android:scaleType="centerCrop"
-            android:src="@drawable/profile"
-            />
+            android:scaleType="centerInside"
+            android:src="@drawable/profile" />
         <TextView
             android:id="@+id/product_detail_name"
             android:layout_width="match_parent"
@@ -61,17 +61,30 @@
             android:layout_marginTop="40dp"
             android:layout_centerHorizontal="true"
              />
+
         <com.google.android.material.floatingactionbutton.FloatingActionButton
             android:id="@+id/cart_button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:elevation="10dp"
-            android:backgroundTint="@color/white"
-            android:src="@drawable/nav_cart"
             android:layout_below="@+id/counter"
+            android:layout_alignParentRight="true"
             android:layout_marginTop="50dp"
-            android:layout_alignParentRight="true"/>
+            android:backgroundTint="@color/pink"
+            android:elevation="10dp"
+            android:src="@drawable/nav_cart" />
 
+        <androidx.appcompat.widget.AppCompatButton
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/cart_button"
+            android:layout_marginHorizontal="30dp"
+            android:background="@drawable/button_shape"
+            android:text="Add To Cart"
+            android:textSize="22dp"
+            android:layout_marginTop="50dp"
+            android:textColor="@color/white"
+            android:padding="15dp"
+            android:id="@+id/add_to_cart"/>
 
 
     </RelativeLayout>
