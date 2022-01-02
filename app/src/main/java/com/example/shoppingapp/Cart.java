@@ -1,10 +1,13 @@
 package com.example.shoppingapp;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -63,6 +66,31 @@ public class Cart extends AppCompatActivity {
                 holder.itemPrice.setText(model.getPrice());
                 holder.itemQuantity.setText(model.getQuantity());
                 Picasso.get().load(model.getImage()).into(holder.itemImage);
+
+                holder.itemView.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        CharSequence choice[]=new CharSequence[]{"Edit","Remove"};
+                        AlertDialog.Builder builder=new AlertDialog.Builder(Cart.this);
+                         builder.setTitle("Choose an option:");
+                         builder.setItems(choice, new DialogInterface.OnClickListener() {
+                             @Override
+                             public void onClick(DialogInterface dialog, int which) {
+                                    if(which==0)
+                                    {
+                                        Intent intent=new Intent(Cart.this,ProductDetails.class);
+                                        intent.putExtra("username",receivedName);
+                                        intent.putExtra("phone",receivedPhone);
+                                        intent.putExtra("image",receivedImage);
+                                        intent.putExtra("address",receivedAddress);
+                                        intent.putExtra("pid",model.getProductID());
+                                        startActivity(intent);
+                                    }
+                             }
+                         });
+                         builder.show();
+                    }
+                });
             }
 
             @NonNull
