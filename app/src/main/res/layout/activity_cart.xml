@@ -24,6 +24,19 @@
                 android:id="@+id/total_price"/>
 
         </RelativeLayout>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textColor="@color/pink"
+        android:textSize="20dp"
+        android:layout_marginHorizontal="20dp"
+        android:layout_centerVertical="true"
+        android:text="Order Has been Placed,Soon you will receive your order"
+        android:textAlignment="center"
+        android:visibility="gone"
+        android:id="@+id/order_message"
+        />
         <androidx.recyclerview.widget.RecyclerView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
@@ -45,5 +58,8 @@
             android:textColor="@color/white"
             android:id="@+id/nextButton"
             />
+
+
+
 
 </RelativeLayout>
