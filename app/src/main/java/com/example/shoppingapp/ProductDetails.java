@@ -85,6 +85,7 @@ public class ProductDetails extends AppCompatActivity {
         map.put("Time",time);
         map.put("Price",price.getText().toString());
         map.put("Quantity",counter.getNumber());
+        map.put("Image",receivedImage);
         map.put("Discount","");
 
         ref.child("User View").child(receivedPhone).child("Products").child(productID)
@@ -108,7 +109,6 @@ public class ProductDetails extends AppCompatActivity {
                                                 intent.putExtra("image",receivedImage);
                                                 intent.putExtra("address",receivedAddress);
                                                 startActivity(intent);
-
                                             }
                                         }
                                     });

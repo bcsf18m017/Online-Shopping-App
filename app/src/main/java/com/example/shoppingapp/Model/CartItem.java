@@ -2,11 +2,11 @@ package com.example.shoppingapp.Model;
 
 public class CartItem {
 
-    private String ProductID,Name,Description,Discount,Price,Quantity,Date,Time;
+    private String ProductID,Name,Description,Discount,Price,Quantity,Date,Time,Image;
 
     public CartItem()
     {}
-    public CartItem(String productID, String name, String description, String discount, String price, String quantity, String date, String time) {
+    public CartItem(String productID, String name, String description, String discount, String price, String quantity, String date, String time,String image) {
         ProductID = productID;
         Name = name;
         Description = description;
@@ -15,6 +15,15 @@ public class CartItem {
         Quantity = quantity;
         Date = date;
         Time = time;
+        Image=image;
+    }
+
+    public String getImage() {
+        return Image;
+    }
+
+    public void setImage(String image) {
+        Image = image;
     }
 
     public String getProductID() {

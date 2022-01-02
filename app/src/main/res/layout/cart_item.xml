@@ -8,7 +8,8 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@color/pink"
-        android:padding="15dp">
+        android:padding="15dp"
+        android:id="@+id/relativeLayout2">
 
         <TextView
             android:layout_width="150dp"
@@ -29,6 +30,7 @@
             android:text="Product Quantity"
             android:textColor="@color/white"
             android:textSize="18dp"
+            android:textAlignment="viewEnd"
             android:textStyle="bold" />
         <TextView
             android:id="@+id/price_cart_item"
@@ -44,7 +46,15 @@
             android:gravity="center"
             android:layout_marginTop="10dp"/>
 
+        <ImageView
+            android:id="@+id/image_cart_item"
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            android:layout_below="@id/price_cart_item"
+            android:layout_marginTop="10dp"
+            android:src="@drawable/profile"
 
+            />
 
     </RelativeLayout>
 
