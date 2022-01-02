@@ -14,11 +14,14 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.shoppingapp.Model.CartItem;
 import com.example.shoppingapp.ViewHolder.CartViewHolder;
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.firebase.ui.database.FirebaseRecyclerOptions;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.squareup.picasso.Picasso;
@@ -57,7 +60,7 @@ public class Cart extends AppCompatActivity {
 
         final DatabaseReference cartListRef= FirebaseDatabase.getInstance().getReference().child("Cart List");
         FirebaseRecyclerOptions<CartItem>options=new FirebaseRecyclerOptions.Builder<CartItem>()
-                .setQuery(cartListRef.child("Admin View").child(receivedPhone).child("Products"),CartItem.class).build();
+                .setQuery(cartListRef.child("User View").child(receivedPhone).child("Products"),CartItem.class).build();
         FirebaseRecyclerAdapter<CartItem, CartViewHolder>adapter=new FirebaseRecyclerAdapter<CartItem, CartViewHolder>(options) {
             @Override
             protected void onBindViewHolder(@NonNull CartViewHolder holder, int position, @NonNull CartItem model) {
@@ -79,12 +82,31 @@ public class Cart extends AppCompatActivity {
                                     if(which==0)
                                     {
                                         Intent intent=new Intent(Cart.this,ProductDetails.class);
-                                        intent.putExtra("username",receivedName);
+                                        intent.putExtra("username",model.getName());
                                         intent.putExtra("phone",receivedPhone);
-                                        intent.putExtra("image",receivedImage);
+                                        intent.putExtra("image",model.getImage());
                                         intent.putExtra("address",receivedAddress);
                                         intent.putExtra("pid",model.getProductID());
                                         startActivity(intent);
+                                    }
+                                    else if(which==1)
+                                    {
+                                        cartListRef.child("User View").child(receivedPhone).child("Products").child(model.getProductID())
+                                                .removeValue().addOnCompleteListener(new OnCompleteListener<Void>() {
+                                            @Override
+                                            public void onComplete(@NonNull Task<Void> task) {
+                                                    if(task.isSuccessful())
+                                                    {
+                                                        Toast.makeText(Cart.this, "Product Removed Successfully", Toast.LENGTH_SHORT).show();
+                                                        Intent intent=new Intent(Cart.this,Home.class);
+                                                        intent.putExtra("Username",receivedName);
+                                                        intent.putExtra("phone",receivedPhone);
+                                                        intent.putExtra("image",receivedImage);
+                                                        intent.putExtra("address",receivedAddress);
+                                                        startActivity(intent);
+                                                    }
+                                            }
+                                        });
                                     }
                              }
                          });
