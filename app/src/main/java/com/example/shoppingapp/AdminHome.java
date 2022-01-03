@@ -121,7 +121,7 @@ public class AdminHome extends AppCompatActivity {
             @Override
             public void onFailure(@NonNull Exception e) {
                 String message=e.getMessage();
-                Toast.makeText(AdminHome.this, "Error0: "+message, Toast.LENGTH_SHORT).show();
+                Toast.makeText(AdminHome.this, "Error: "+message, Toast.LENGTH_SHORT).show();
                 loadingBar.dismiss();
             }
         }).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
