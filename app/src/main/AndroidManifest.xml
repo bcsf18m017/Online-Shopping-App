@@ -15,6 +15,9 @@
         android:theme="@style/Theme.ShoppingApp"
         tools:replace="android:theme">
         <activity
+            android:name=".SearchProduct"
+            android:exported="false" />
+        <activity
             android:name=".UserProducts"
             android:exported="false" />
         <activity
