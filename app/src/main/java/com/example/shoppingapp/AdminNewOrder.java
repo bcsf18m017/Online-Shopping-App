@@ -1,10 +1,13 @@
 package com.example.shoppingapp;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.annotation.SuppressLint;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -42,7 +45,7 @@ public class AdminNewOrder extends AppCompatActivity {
 
         FirebaseRecyclerAdapter<Orders,OrdersViewHolder> adapter=new FirebaseRecyclerAdapter<Orders, OrdersViewHolder>(options) {
             @Override
-            protected void onBindViewHolder(@NonNull OrdersViewHolder holder, int position, @NonNull Orders model) {
+            protected void onBindViewHolder(@NonNull OrdersViewHolder holder, @SuppressLint("RecyclerView") int position, @NonNull Orders model) {
 
                 holder.username.setText("Username: "+model.getName());
                 holder.phone.setText("Phone: "+model.getPhone());
@@ -58,6 +61,30 @@ public class AdminNewOrder extends AppCompatActivity {
                         startActivity(intent);
                     }
                 });
+
+                holder.itemView.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        CharSequence options[]=new CharSequence[]{"Yes","No"};
+                        AlertDialog.Builder builder=new AlertDialog.Builder(AdminNewOrder.this);
+                        builder.setTitle("Have You Shipped this order?");
+                        builder.setItems(options, new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                if(which==0)
+                                {
+                                    String uid=getRef(position).getKey();
+                                    removeOrder(uid);
+                                }
+                                else
+                                {
+                                    finish();
+                                }
+                            }
+                        });
+                        builder.show();
+                    }
+                });
             }
 
             @NonNull
@@ -70,6 +97,11 @@ public class AdminNewOrder extends AppCompatActivity {
 
         recyclerView.setAdapter(adapter);
         adapter.startListening();
+    }
+
+    private void removeOrder(String uid) {
+
+        orderRef.child(uid).removeValue();
     }
 
     public static class OrdersViewHolder extends  RecyclerView.ViewHolder
