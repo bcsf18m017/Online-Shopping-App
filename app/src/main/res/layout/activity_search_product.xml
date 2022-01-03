@@ -47,6 +47,7 @@
         android:layout_below="@id/relativeLayout5"
         android:id="@+id/searchList"
         android:layout_marginTop="20dp"
+
         />
 
 

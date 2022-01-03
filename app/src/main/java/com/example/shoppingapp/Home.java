@@ -68,13 +68,9 @@ public class Home extends AppCompatActivity implements NavigationView.OnNavigati
         recyclerView.setHasFixedSize(true);
         layoutManager=new LinearLayoutManager(this);
         recyclerView.setLayoutManager(layoutManager);
+        
 
-        imageView=findViewById(R.id.user_image);
 
-//        if(!imageReceived.equals(""))
-//        {
-//            Picasso.get().load(imageReceived).placeholder(R.drawable.profile).into(imageView);
-//        }
 
         Paper.init(this);
         Toolbar toolbar=findViewById(R.id.toolbar);
@@ -111,6 +107,10 @@ public class Home extends AppCompatActivity implements NavigationView.OnNavigati
         TextView userName=headerView.findViewById(R.id.user_name);
         CircleImageView userImage=headerView.findViewById(R.id.user_image);
         userName.setText(user);
+        if(!imageReceived.equals(""))
+        {
+            Picasso.get().load(imageReceived).placeholder(R.drawable.profile).into(userImage);
+        }
     }
 
     @Override
@@ -158,9 +158,14 @@ public class Home extends AppCompatActivity implements NavigationView.OnNavigati
             intent.putExtra("username",user);
             startActivity(intent);
         }
-        else if(id==R.id.nav_orders)
+        else if(id==R.id.nav_search)
         {
-
+            Intent intent=new Intent(Home.this,SearchProduct.class);
+            intent.putExtra("phone",phoneReceived);
+            intent.putExtra("image",imageReceived);
+            intent.putExtra("address",addressReceived);
+            intent.putExtra("username",user);
+            startActivity(intent);
         }
 
         else if(id==R.id.nav_settings)
