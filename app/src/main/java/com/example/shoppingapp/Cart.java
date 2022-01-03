@@ -114,6 +114,8 @@ public class Cart extends AppCompatActivity {
                                     }
                                     else if(which==1)
                                     {
+                                        cartListRef.child("Admin View").child(receivedPhone).child("Products").child(model.getProductID())
+                                                .removeValue();
                                         cartListRef.child("User View").child(receivedPhone).child("Products").child(model.getProductID())
                                                 .removeValue().addOnCompleteListener(new OnCompleteListener<Void>() {
                                             @Override
