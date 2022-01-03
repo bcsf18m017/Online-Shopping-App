@@ -1,10 +1,13 @@
 package com.example.shoppingapp;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.annotation.SuppressLint;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -50,7 +53,7 @@ public class AdminProductsDisplay extends AppCompatActivity {
         FirebaseRecyclerAdapter<Product, ProductViewHolder> adapter=
                 new FirebaseRecyclerAdapter<Product, ProductViewHolder>(options) {
                     @Override
-                    protected void onBindViewHolder(@NonNull ProductViewHolder holder, int position, @NonNull Product model) {
+                    protected void onBindViewHolder(@NonNull ProductViewHolder holder, @SuppressLint("RecyclerView") int position, @NonNull Product model) {
 
                         holder.name.setText(model.getName());
                         holder.price.setText(model.getPrice()+"$");
@@ -61,6 +64,27 @@ public class AdminProductsDisplay extends AppCompatActivity {
                             @Override
                             public void onClick(View v) {
 
+                                CharSequence choice[]=new CharSequence[]{"Edit","Remove"};
+                                AlertDialog.Builder builder=new AlertDialog.Builder(AdminProductsDisplay.this);
+                                builder.setTitle("Choose an option:");
+                                builder.setItems(choice, new DialogInterface.OnClickListener() {
+                                    @Override
+                                    public void onClick(DialogInterface dialog, int which) {
+                                        if(which==0)
+                                        {
+                                            Intent intent=new Intent(AdminProductsDisplay.this,MaintainProducts.class);
+                                            intent.putExtra("pid",model.getDate()+model.getTime());
+                                            startActivity(intent);
+                                        }
+                                        else if(which==1)
+                                        {
+                                                String pid=getRef(position).getKey();
+                                                productsRef.child(pid).removeValue();
+                                        }
+
+                                    }
+                                });
+                                builder.show();
                             }
                         });
                     }
