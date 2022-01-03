@@ -1,9 +1,71 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".MaintainProducts">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="@color/pink"
+        android:id="@+id/rc"
+        android:layout_marginBottom="10dp"/>
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="300dp"
+        android:src="@drawable/profile"
+        android:id="@+id/editProductImage"
+        android:layout_below="@+id/rc"/>
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/input_shape"
+        android:layout_below="@id/editProductName"
+        android:layout_marginHorizontal="30dp"
+        android:hint="Price"
+        android:padding="15dp"
+        android:layout_marginTop="15dp"
+        android:id="@+id/editProductPrice"
+        />
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/input_shape"
+        android:layout_below="@id/editProductImage"
+        android:layout_marginHorizontal="30dp"
+        android:hint="Name"
+        android:padding="15dp"
+        android:layout_marginTop="15dp"
+        android:id="@+id/editProductName"
+        />
+    <EditText
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/input_shape"
+    android:layout_below="@id/editProductPrice"
+    android:layout_marginHorizontal="30dp"
+    android:hint="Description"
+    android:padding="15dp"
+    android:layout_marginTop="15dp"
+    android:id="@+id/editProductDescription"
+    />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/button_shape"
+        android:layout_below="@id/editProductDescription"
+        android:layout_margin="30dp"
+        android:text="Update Product"
+        android:textColor="@color/white"
+        android:textSize="20dp"
+        android:id="@+id/updateProductButton"
+        />
+
+
+</RelativeLayout>

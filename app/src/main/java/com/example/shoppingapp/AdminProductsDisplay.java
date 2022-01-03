@@ -74,6 +74,10 @@ public class AdminProductsDisplay extends AppCompatActivity {
                                         {
                                             Intent intent=new Intent(AdminProductsDisplay.this,MaintainProducts.class);
                                             intent.putExtra("pid",model.getDate()+model.getTime());
+                                            intent.putExtra("image",model.getImage());
+                                            intent.putExtra("name",model.getName());
+                                            intent.putExtra("description",model.getDescription());
+                                            intent.putExtra("price",model.getPrice());
                                             startActivity(intent);
                                         }
                                         else if(which==1)
