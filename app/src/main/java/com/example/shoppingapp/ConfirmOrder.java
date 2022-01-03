@@ -90,7 +90,7 @@ public class ConfirmOrder extends AppCompatActivity {
 
         final DatabaseReference orderRef= FirebaseDatabase.getInstance().getReference().child("Orders").child(receivedPhone);
         HashMap<String,Object>map=new HashMap<>();
-        map.put("Total Amount",total);
+        map.put("TotalAmount",total);
         map.put("Name",name.getText().toString());
         map.put("Address",address.getText().toString());
         map.put("City",city.getText().toString());
