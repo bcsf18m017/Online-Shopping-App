@@ -74,6 +74,9 @@ public class Settings extends AppCompatActivity {
                 Intent intent=new Intent(Settings.this,ResetPassword.class);
                 intent.putExtra("check","settings");
                 intent.putExtra("phone",receivedPhone);
+                intent.putExtra("username",receivedName);
+                intent.putExtra("image",receivedImage);
+                intent.putExtra("address",receivedAddress);
                 startActivity(intent);
             }
         });
