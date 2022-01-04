@@ -7,10 +7,12 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
 
 import com.example.shoppingapp.Admin.AdminCategory;
 import com.example.shoppingapp.Prevalent.Prevalent;
 import com.example.shoppingapp.R;
+import com.example.shoppingapp.Seller.SellerRegistration;
 
 import io.paperdb.Paper;
 
@@ -18,6 +20,7 @@ public class MainActivity extends AppCompatActivity {
 
     Button loginButton,signupButton;
     private ProgressDialog loadingBar;
+    TextView seller;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -27,6 +30,15 @@ public class MainActivity extends AppCompatActivity {
         signupButton=(Button)findViewById(R.id.main_signup_button);
 
         loadingBar=new ProgressDialog(this);
+        seller=findViewById(R.id.sellerLink);
+
+        seller.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent =new Intent(MainActivity.this, SellerRegistration.class);
+                startActivity(intent);
+            }
+        });
 
         Paper.init(this);
 
