@@ -15,6 +15,9 @@
         android:theme="@style/Theme.ShoppingApp"
         tools:replace="android:theme">
         <activity
+            android:name=".Seller.SellerRegistration"
+            android:exported="false" />
+        <activity
             android:name=".Buyer.ResetPassword"
             android:exported="false" />
         <activity
