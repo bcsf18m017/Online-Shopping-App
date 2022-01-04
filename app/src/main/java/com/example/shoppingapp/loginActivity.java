@@ -13,6 +13,7 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.shoppingapp.Admin.AdminCategory;
 import com.example.shoppingapp.Model.Users;
 import com.example.shoppingapp.Prevalent.Prevalent;
 import com.google.firebase.database.DataSnapshot;
@@ -30,7 +31,7 @@ public class loginActivity extends AppCompatActivity {
     Button login;
     private CheckBox checkBox;
     private ProgressDialog loadingBar;
-    private TextView admin,user;
+    private TextView admin,user,forgetPassword;
     String parentDBName="Users";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,6 +43,16 @@ public class loginActivity extends AppCompatActivity {
         password=findViewById(R.id.password);
         admin=findViewById(R.id.adminLink);
         user=findViewById(R.id.clientLink);
+        forgetPassword=findViewById(R.id.forgetPassword);
+
+        forgetPassword.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent=new Intent(loginActivity.this,ResetPassword.class);
+                intent.putExtra("check","login");
+                startActivity(intent);
+            }
+        });
 
         loadingBar=new ProgressDialog(this);
 
@@ -135,7 +146,7 @@ public class loginActivity extends AppCompatActivity {
                         }
                         else
                         {
-                            Intent intent =new Intent(loginActivity.this,AdminCategory.class);
+                            Intent intent =new Intent(loginActivity.this, AdminCategory.class);
                             startActivity(intent);
                         }
                     }

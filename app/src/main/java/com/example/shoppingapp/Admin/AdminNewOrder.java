@@ -1,4 +1,4 @@
-package com.example.shoppingapp;
+package com.example.shoppingapp.Admin;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
@@ -17,6 +17,7 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import com.example.shoppingapp.Model.Orders;
+import com.example.shoppingapp.R;
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.firebase.ui.database.FirebaseRecyclerOptions;
 import com.google.firebase.database.DatabaseReference;
@@ -56,7 +57,7 @@ public class AdminNewOrder extends AppCompatActivity {
                 holder.orderDetails.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        Intent intent=new Intent(AdminNewOrder.this,UserProducts.class);
+                        Intent intent=new Intent(AdminNewOrder.this, UserProducts.class);
                         intent.putExtra("phone",getRef(position).getKey());
                         startActivity(intent);
                     }

@@ -99,5 +99,18 @@
             android:background="@drawable/input_shape"
             android:layout_marginHorizontal="50dp"
             />
+        <androidx.appcompat.widget.AppCompatButton
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/security_questions"
+            android:padding="15dp"
+            android:layout_below="@id/setting_address"
+            android:layout_marginTop="15dp"
+            android:text="Set Security Question"
+            android:textColor="@color/white"
+            android:textSize="17dp"
+            android:background="@drawable/button_shape"
+            android:layout_marginHorizontal="50dp"
+            />
     </RelativeLayout>
 </ScrollView>

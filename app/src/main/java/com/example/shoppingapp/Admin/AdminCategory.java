@@ -1,4 +1,4 @@
-package com.example.shoppingapp;
+package com.example.shoppingapp.Admin;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -7,6 +7,9 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
+
+import com.example.shoppingapp.MainActivity;
+import com.example.shoppingapp.R;
 
 import io.paperdb.Paper;
 
@@ -50,7 +53,7 @@ public class AdminCategory extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Paper.book().destroy();
-                Intent intent=new Intent(AdminCategory.this,MainActivity.class);
+                Intent intent=new Intent(AdminCategory.this, MainActivity.class);
                 intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
                 startActivity(intent);
                 finish();

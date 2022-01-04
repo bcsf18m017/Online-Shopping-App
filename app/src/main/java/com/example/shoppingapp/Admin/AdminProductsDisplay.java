@@ -1,4 +1,4 @@
-package com.example.shoppingapp;
+package com.example.shoppingapp.Admin;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
@@ -15,6 +15,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.example.shoppingapp.Model.Product;
+import com.example.shoppingapp.R;
 import com.example.shoppingapp.ViewHolder.ProductViewHolder;
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.firebase.ui.database.FirebaseRecyclerOptions;

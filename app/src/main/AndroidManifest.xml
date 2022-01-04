@@ -15,53 +15,55 @@
         android:theme="@style/Theme.ShoppingApp"
         tools:replace="android:theme">
         <activity
-            android:name=".MaintainProducts"
-            android:exported="false"
-            android:launchMode="singleTask"
-            />
+            android:name=".ResetPassword"
+            android:exported="false" />
         <activity
-            android:name=".AdminProductsDisplay"
+            android:name=".Admin.MaintainProducts"
             android:exported="false"
-            android:launchMode="singleTask"/>
+            android:launchMode="singleTask" />
+        <activity
+            android:name=".Admin.AdminProductsDisplay"
+            android:exported="false"
+            android:launchMode="singleTask" />
         <activity
             android:name=".SearchProduct"
             android:exported="false"
-            android:launchMode="singleTask"/>
+            android:launchMode="singleTask" />
         <activity
-            android:name=".UserProducts"
+            android:name=".Admin.UserProducts"
             android:exported="false"
-            android:launchMode="singleTask"/>
+            android:launchMode="singleTask" />
         <activity
-            android:name=".AdminNewOrder"
+            android:name=".Admin.AdminNewOrder"
             android:exported="false"
-            android:launchMode="singleTask"/>
+            android:launchMode="singleTask" />
         <activity
             android:name=".ConfirmOrder"
             android:exported="false"
-            android:launchMode="singleTask"/>
+            android:launchMode="singleTask" />
         <activity
             android:name=".Cart"
             android:exported="false"
-            android:launchMode="singleTask"/>
+            android:launchMode="singleTask" />
         <activity
             android:name=".ProductDetails"
             android:exported="false"
-            android:launchMode="singleTask"/>
+            android:launchMode="singleTask" />
         <activity
             android:name=".Settings"
             android:exported="false"
-            android:launchMode="singleTask"/>
+            android:launchMode="singleTask" />
         <activity
             android:name=".Home"
             android:exported="false"
             android:label="@string/title_activity_home"
             android:theme="@style/Theme.ShoppingApp.NoActionBar" />
         <activity
-            android:name=".AdminCategory"
+            android:name=".Admin.AdminCategory"
             android:exported="false"
             android:launchMode="singleTask" />
         <activity
-            android:name=".AdminHome"
+            android:name=".Admin.AdminHome"
             android:exported="false"
             android:launchMode="singleTask" />
         <activity
@@ -71,7 +73,8 @@
         <activity
             android:name=".loginActivity"
             android:exported="false"
-            android:launchMode="singleTask" />
+            android:launchMode="singleTask"
+            android:windowSoftInputMode="stateAlwaysHidden" />
         <activity
             android:name=".MainActivity"
             android:exported="true"

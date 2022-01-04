@@ -1,26 +1,15 @@
 package com.example.shoppingapp;
 
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
-import android.os.Handler;
-import android.text.TextUtils;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
-import android.widget.Toast;
 
-import com.example.shoppingapp.Model.Users;
+import com.example.shoppingapp.Admin.AdminCategory;
 import com.example.shoppingapp.Prevalent.Prevalent;
-import com.google.firebase.database.DataSnapshot;
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.ValueEventListener;
-
-import java.util.Timer;
 
 import io.paperdb.Paper;
 
@@ -64,7 +53,7 @@ public class MainActivity extends AppCompatActivity {
             String str3=Paper.book().read("Address").toString();
            if(Paper.book().read("User").toString().equals("Admins"))
            {
-               Intent intent=new Intent(MainActivity.this,AdminCategory.class);
+               Intent intent=new Intent(MainActivity.this, AdminCategory.class);
                intent.putExtra("Username",str);
                intent.putExtra("phone",str1);
                startActivity(intent);
