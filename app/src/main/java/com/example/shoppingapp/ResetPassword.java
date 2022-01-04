@@ -1,8 +1,11 @@
 package com.example.shoppingapp;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.Dialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -11,6 +14,7 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.android.gms.common.data.DataBufferSafeParcelable;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.database.DataSnapshot;
@@ -53,13 +57,93 @@ public class ResetPassword extends AppCompatActivity {
         if(check.equals("login"))
         {
             phone.setVisibility(View.VISIBLE);
-
+            verify.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    if(phone.getText().toString().equals("")||question1.getText().toString().equals("")||question2.getText().toString().equals(""))
+                    {
+                        Toast.makeText(ResetPassword.this,"Please Fill All Fields",Toast.LENGTH_SHORT).show();
+                    }
+                    else
+                    {
+                        verifyUser();
+                    }
+                }
+            });
         }
         else
         {
             settingsCall();
         }
     }
+
+    private void verifyUser() {
+
+        String ph=phone.getText().toString();
+       final  DatabaseReference ref= (DatabaseReference) FirebaseDatabase.getInstance().getReference().child("Users");
+       ref.child(ph).addValueEventListener(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot snapshot) {
+                        if(snapshot.exists())
+                        {
+                            String ans1=snapshot.child("Security Questions").child("Answer1").getValue().toString();
+                            String ans2=snapshot.child("Security Questions").child("Answer2").getValue().toString();
+                            String txt1=question1.getText().toString();
+                            String txt2=question2.getText().toString();
+                            if(ans1.equals(txt1)&&ans2.equals(txt2))
+                            {
+                                AlertDialog builder=new AlertDialog.Builder(ResetPassword.this).create();
+                                builder.setTitle("Enter New Password");
+                                final EditText password=new EditText(ResetPassword.this);
+                                password.setHint("Write New Password Here..");
+                                builder.setView(password);
+
+                                builder.setButton(Dialog.BUTTON_POSITIVE,"Change", new DialogInterface.OnClickListener() {
+                                    @Override
+                                    public void onClick(DialogInterface dialog, int which) {
+                                        if(!password.getText().toString().equals(""))
+                                        {
+                                            FirebaseDatabase.getInstance().getReference().child("Users").child(ph).child("Password").setValue(password.getText().toString())
+                                                    .addOnCompleteListener(new OnCompleteListener<Void>() {
+                                                        @Override
+                                                        public void onComplete(@NonNull Task<Void> task) {
+                                                            if(task.isSuccessful())
+                                                            {
+                                                                Toast.makeText(ResetPassword.this, "Password Changed Successfully", Toast.LENGTH_SHORT).show();
+                                                                builder.dismiss();
+                                                            }
+                                                        }
+                                                    });
+                                        }
+                                    }
+                                });
+                                builder.setButton(Dialog.BUTTON_NEGATIVE,"Cancel", new DialogInterface.OnClickListener() {
+                                    @Override
+                                    public void onClick(DialogInterface dialog, int which) {
+                                        builder.dismiss();
+                                    }
+                                });
+                                builder.show();
+                            }
+                            else
+                            {
+                                Toast.makeText(ResetPassword.this,"Answers Do Not Match",Toast.LENGTH_SHORT).show();
+                            }
+                        }
+                        else
+                        {
+                            Toast.makeText(ResetPassword.this,"User With This Phone Does Not Exist",Toast.LENGTH_SHORT).show();
+                        }
+                    }
+
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError error) {
+
+                    }
+                });
+
+    }
+
     private void  settingsCall()
     {
         String receivedName,receivedPhone,receivedImage,receivedAddress;
