@@ -8,7 +8,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 
-import com.example.shoppingapp.MainActivity;
+import com.example.shoppingapp.Buyer.MainActivity;
 import com.example.shoppingapp.R;
 
 import io.paperdb.Paper;

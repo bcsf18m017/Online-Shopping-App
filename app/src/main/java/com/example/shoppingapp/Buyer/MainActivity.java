@@ -1,4 +1,4 @@
-package com.example.shoppingapp;
+package com.example.shoppingapp.Buyer;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -10,6 +10,7 @@ import android.widget.Button;
 
 import com.example.shoppingapp.Admin.AdminCategory;
 import com.example.shoppingapp.Prevalent.Prevalent;
+import com.example.shoppingapp.R;
 
 import io.paperdb.Paper;
 

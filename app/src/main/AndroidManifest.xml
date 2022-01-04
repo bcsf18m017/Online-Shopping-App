@@ -15,7 +15,7 @@
         android:theme="@style/Theme.ShoppingApp"
         tools:replace="android:theme">
         <activity
-            android:name=".ResetPassword"
+            android:name=".Buyer.ResetPassword"
             android:exported="false" />
         <activity
             android:name=".Admin.MaintainProducts"
@@ -26,7 +26,7 @@
             android:exported="false"
             android:launchMode="singleTask" />
         <activity
-            android:name=".SearchProduct"
+            android:name=".Buyer.SearchProduct"
             android:exported="false"
             android:launchMode="singleTask" />
         <activity
@@ -38,23 +38,23 @@
             android:exported="false"
             android:launchMode="singleTask" />
         <activity
-            android:name=".ConfirmOrder"
+            android:name=".Buyer.ConfirmOrder"
             android:exported="false"
             android:launchMode="singleTask" />
         <activity
-            android:name=".Cart"
+            android:name=".Buyer.Cart"
             android:exported="false"
             android:launchMode="singleTask" />
         <activity
-            android:name=".ProductDetails"
+            android:name=".Buyer.ProductDetails"
             android:exported="false"
             android:launchMode="singleTask" />
         <activity
-            android:name=".Settings"
+            android:name=".Buyer.Settings"
             android:exported="false"
             android:launchMode="singleTask" />
         <activity
-            android:name=".Home"
+            android:name=".Buyer.Home"
             android:exported="false"
             android:label="@string/title_activity_home"
             android:theme="@style/Theme.ShoppingApp.NoActionBar" />
@@ -67,16 +67,16 @@
             android:exported="false"
             android:launchMode="singleTask" />
         <activity
-            android:name=".signupActivity"
+            android:name=".Buyer.signupActivity"
             android:exported="false"
             android:launchMode="singleTask" />
         <activity
-            android:name=".loginActivity"
+            android:name=".Buyer.loginActivity"
             android:exported="false"
             android:launchMode="singleTask"
             android:windowSoftInputMode="stateAlwaysHidden" />
         <activity
-            android:name=".MainActivity"
+            android:name=".Buyer.MainActivity"
             android:exported="true"
             android:launchMode="singleTask">
             <intent-filter>
