@@ -63,19 +63,22 @@ public class Settings extends AppCompatActivity {
         phone.setEnabled(false);
         securityQuestion=findViewById(R.id.security_questions);
 
+        receivedName=getIntent().getExtras().get("Username").toString();
+        receivedPhone=getIntent().getExtras().get("phone").toString();
+        receivedImage=getIntent().getExtras().get("image").toString();
+        receivedAddress=getIntent().getExtras().get("address").toString();
+
         securityQuestion.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent=new Intent(Settings.this,ResetPassword.class);
                 intent.putExtra("check","settings");
+                intent.putExtra("phone",receivedPhone);
                 startActivity(intent);
             }
         });
 
-        receivedName=getIntent().getExtras().get("Username").toString();
-        receivedPhone=getIntent().getExtras().get("phone").toString();
-        receivedImage=getIntent().getExtras().get("image").toString();
-        receivedAddress=getIntent().getExtras().get("address").toString();
+
 
         picRef= FirebaseStorage.getInstance().getReference().child("Profile Pictures");
         userInfoDisplay(profileImageView,name,phone,address);
