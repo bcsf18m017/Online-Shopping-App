@@ -4,111 +4,99 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/register"
+    android:background="@drawable/white"
     tools:context=".Buyer.signupActivity">
 
 
-  <RelativeLayout
-      android:layout_width="match_parent"
-      android:layout_height="match_parent">
-      <ImageView
-          android:id="@+id/reg_app_logo"
-          android:layout_width="300dp"
-          android:layout_height="100dp"
-          android:layout_centerHorizontal="true"
-          android:layout_marginTop="50dp"
-          android:src="@drawable/applogo" />
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <ImageView
+            android:id="@+id/reg_app_logo"
+            android:layout_width="250dp"
+            android:layout_height="200dp"
+            android:layout_centerHorizontal="true"
+            android:src="@drawable/logo" />
 
-      <EditText
-          android:id="@+id/reg_phoneNumber"
-          android:layout_width="match_parent"
-          android:layout_height="wrap_content"
-          android:layout_below="@id/name"
-          android:layout_marginHorizontal="15dp"
-          android:layout_marginTop="14dp"
-          android:layout_marginBottom="15dp"
-          android:background="@drawable/input_shape"
-          android:hint="Phone"
-          android:inputType="number"
-          android:padding="20dp"
-          android:textColor="@color/white"
-          android:textColorHint="@color/white"
-          android:textSize="30sp"
-          android:textStyle="bold" />
-
-      <EditText
-          android:id="@+id/name"
-          android:layout_width="match_parent"
-          android:layout_height="wrap_content"
-          android:layout_below="@id/reg_app_logo"
-          android:layout_marginHorizontal="15dp"
-          android:layout_marginTop="20dp"
-          android:background="@drawable/input_shape"
-          android:hint="Name"
-          android:padding="20dp"
-          android:textColor="@color/white"
-          android:textColorHint="@color/white"
-          android:textSize="30sp"
-          android:textStyle="bold" />
-
-      <EditText
-          android:id="@+id/reg_password"
-          android:layout_width="match_parent"
-          android:layout_height="wrap_content"
-          android:layout_below="@id/reg_app_logo"
-          android:layout_marginHorizontal="15dp"
-          android:layout_marginTop="223dp"
-          android:textColor="@color/white"
-          android:background="@drawable/input_shape"
-          android:hint="Password"
-          android:padding="20dp"
-          android:textColorHint="@color/white"
-          android:textSize="30sp"
-          android:textStyle="bold" />
-      <EditText
-          android:id="@+id/reg_confirm_password"
-          android:layout_width="match_parent"
-          android:layout_height="wrap_content"
-          android:layout_below="@id/reg_password"
-          android:layout_marginHorizontal="15dp"
-          android:layout_marginTop="15dp"
-          android:textColor="@color/white"
-          android:background="@drawable/input_shape"
-          android:hint="Password"
-          android:padding="20dp"
-          android:textColorHint="@color/white"
-          android:textSize="30sp"
-          android:textStyle="bold" />
-      <EditText
-          android:id="@+id/reg_address"
-          android:layout_width="match_parent"
-          android:layout_height="wrap_content"
-          android:layout_below="@id/reg_confirm_password"
-          android:layout_marginHorizontal="15dp"
-          android:layout_marginTop="15dp"
-          android:textColor="@color/white"
-          android:background="@drawable/input_shape"
-          android:hint="Address"
-          android:padding="20dp"
-          android:textColorHint="@color/white"
-          android:textSize="30sp"
-          android:textStyle="bold" />
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="30dp"
+            android:layout_marginTop="70dp"
+            android:layout_below="@id/reg_app_logo"
+            android:hint="Name..."
+            android:inputType="text"
+            android:textSize="20dp"
+            android:padding="10dp"
+            android:id="@+id/name"
+            />
 
 
-      <androidx.appcompat.widget.AppCompatButton
-          android:id="@+id/signUp"
-          android:layout_width="match_parent"
-          android:layout_height="wrap_content"
-          android:layout_below="@id/reg_address"
-          android:layout_marginTop="10dp"
-          android:background="@drawable/button_shape"
-          android:padding="10dp"
-          android:text="Sign Up"
-          android:layout_marginHorizontal="30dp"
-          android:textAllCaps="false"
-          android:textColor="@color/white"
-          android:textSize="20sp"
-          android:textStyle="bold" />
-  </RelativeLayout>
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="30dp"
+            android:layout_marginTop="15dp"
+            android:layout_below="@id/name"
+            android:hint="Phone Number..."
+            android:inputType="number"
+            android:textSize="20dp"
+            android:padding="10dp"
+            android:id="@+id/reg_phoneNumber"
+            />
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="30dp"
+            android:layout_marginTop="15dp"
+            android:layout_below="@id/reg_phoneNumber"
+            android:hint="Password"
+            android:inputType="textPassword"
+            android:textSize="20dp"
+            android:padding="10dp"
+            android:id="@+id/reg_password"
+            />
+
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="30dp"
+            android:layout_marginTop="15dp"
+            android:layout_below="@id/reg_password"
+            android:hint="Confirm Password"
+            android:inputType="textPassword"
+            android:textSize="20dp"
+            android:padding="10dp"
+            android:id="@+id/reg_confirm_password"
+            />
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="30dp"
+            android:layout_marginTop="15dp"
+            android:layout_below="@id/reg_confirm_password"
+            android:hint="Shop Address..."
+            android:inputType="text"
+            android:textSize="20dp"
+            android:padding="10dp"
+            android:id="@+id/reg_address"
+            />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="50dp"
+            android:layout_marginHorizontal="30dp"
+            android:layout_below="@id/reg_address"
+            android:text="Register"
+            android:background="@drawable/button_shape"
+            android:textStyle="bold"
+            android:textSize="20dp"
+            android:textColor="@color/pink"
+            android:textAllCaps="false"
+            android:id="@+id/signUp"/>
+    </RelativeLayout>
 
 </ScrollView>
