@@ -1,8 +1,5 @@
 package com.example.shoppingapp.Buyer;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
@@ -12,6 +9,9 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.shoppingapp.Admin.AdminCategory;
 import com.example.shoppingapp.Model.Users;
@@ -30,7 +30,7 @@ public class loginActivity extends AppCompatActivity {
 
     EditText phone,password;
     Button login;
-    private CheckBox checkBox;
+    private CheckBox checkBox,adminCheck;
     private ProgressDialog loadingBar;
     private TextView admin,user,forgetPassword;
     String parentDBName="Users";
@@ -42,10 +42,8 @@ public class loginActivity extends AppCompatActivity {
         login=findViewById(R.id.login);
         phone=findViewById(R.id.phoneNumber);
         password=findViewById(R.id.password);
-        admin=findViewById(R.id.adminLink);
-        user=findViewById(R.id.clientLink);
         forgetPassword=findViewById(R.id.forgetPassword);
-
+        adminCheck=findViewById(R.id.adminCheckBox);
         forgetPassword.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -63,24 +61,16 @@ public class loginActivity extends AppCompatActivity {
         login.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                validateUser();
-            }
-        });
 
-        admin.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                admin.setVisibility(View.INVISIBLE);
-                user.setVisibility(View.VISIBLE);
-                parentDBName="Admins";
-            }
-        });
-        user.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                admin.setVisibility(View.VISIBLE);
-                user.setVisibility(View.INVISIBLE);
-                parentDBName="Users";
+                if(adminCheck.isChecked())
+                {
+                    parentDBName="Admins";
+                }
+                else
+                {
+                    parentDBName="Users";
+                }
+                validateUser();
             }
         });
     }
