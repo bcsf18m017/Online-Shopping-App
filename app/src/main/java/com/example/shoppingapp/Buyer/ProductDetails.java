@@ -1,8 +1,6 @@
 package com.example.shoppingapp.Buyer;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -10,6 +8,9 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.cepheuen.elegantnumberbutton.view.ElegantNumberButton;
 import com.example.shoppingapp.Model.Product;
@@ -35,7 +36,8 @@ public class ProductDetails extends AppCompatActivity {
     ElegantNumberButton counter;
     TextView name,price,description;
     Button addToCart;
-    private String productID="",receivedPhone,receivedAddress,receivedImage,receivedName,state="normal";
+    ProgressDialog loadingBar;
+    private String productID="",receivedPhone,receivedAddress,receivedImage,receivedName;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -49,35 +51,35 @@ public class ProductDetails extends AppCompatActivity {
         cart=findViewById(R.id.cart_button);
         addToCart=findViewById(R.id.add_to_cart);
 
+        loadingBar=new ProgressDialog(this);
+
         productID=getIntent().getStringExtra("pid");
         receivedPhone=getIntent().getStringExtra("phone");
         receivedImage=getIntent().getStringExtra("image");
         receivedAddress=getIntent().getStringExtra("address");
         receivedName=getIntent().getStringExtra("username");
-        Toast.makeText(ProductDetails.this, productID, Toast.LENGTH_SHORT).show();
 
         getProductDetails(productID);
 
-       // checkOrderStat();
+
+        try {
+            counter.setNumber(getIntent().getStringExtra("counter"));
+        }
+        catch (Exception e)
+        {
+            counter.setNumber("1");
+        }
         addToCart.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(state.equals("Order Shipped"))
-                {
-                    Toast.makeText(ProductDetails.this, "You Can Purchase More Products Once You Will Receive Your Order"
-                            , Toast.LENGTH_LONG).show();
-                }
-                else
-                {
-                    addingToCartList();
-                }
-
+                addingToCartList();
             }
         });
 
     }
 
     private void addingToCartList() {
+
         String date,time;
         Calendar calendar=Calendar.getInstance();
         SimpleDateFormat format=new SimpleDateFormat("MM dd, yyyy");
@@ -98,38 +100,30 @@ public class ProductDetails extends AppCompatActivity {
         map.put("Image",receivedImage);
         map.put("Discount","");
 
-        ref.child("User View").child(receivedPhone).child("Products").child(productID)
+        ref.child(receivedPhone).child("Products").child(productID)
                 .updateChildren(map)
                 .addOnCompleteListener(new OnCompleteListener<Void>() {
                     @Override
                     public void onComplete(@NonNull Task<Void> task) {
                         if(task.isSuccessful())
                         {
-                            ref.child("Admin View").child(receivedPhone).child("Products").child(productID)
-                                    .updateChildren(map)
-                                    .addOnCompleteListener(new OnCompleteListener<Void>() {
-                                        @Override
-                                        public void onComplete(@NonNull Task<Void> task) {
-                                            if(task.isSuccessful())
-                                            {
-                                                Toast.makeText(ProductDetails.this, "Added to Cart List Successfully", Toast.LENGTH_SHORT).show();
-                                                Intent intent=new Intent(ProductDetails.this,Home.class);
-                                                intent.putExtra("Username",receivedName);
-                                                intent.putExtra("phone",receivedPhone);
-                                                intent.putExtra("image",receivedImage);
-                                                intent.putExtra("address",receivedAddress);
-                                                startActivity(intent);
-                                            }
-                                        }
-                                    });
+                            Toast.makeText(ProductDetails.this, "Added to Cart List Successfully", Toast.LENGTH_SHORT).show();
+                            Intent intent=new Intent(ProductDetails.this,Home.class);
+                            intent.putExtra("Username",receivedName);
+                            intent.putExtra("phone",receivedPhone);
+                            intent.putExtra("image",receivedImage);
+                            intent.putExtra("address",receivedAddress);
+                            intent.setFlags(Intent.FLAG_ACTIVITY_NO_HISTORY);
+                            startActivity(intent);
+                            finish();
                         }
                     }
                 });
     }
 
+
     private void getProductDetails(String productID) {
         DatabaseReference ref= FirebaseDatabase.getInstance().getReference().child("Products");
-
         ref.child(productID).addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
@@ -149,37 +143,5 @@ public class ProductDetails extends AppCompatActivity {
             }
         });
 
-    }
-    private void checkOrderStat()
-    {
-        DatabaseReference orderRef=FirebaseDatabase.getInstance().getReference().child("Orders").child(receivedPhone);
-        orderRef.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot snapshot) {
-                if(snapshot.exists())
-                {
-                    String state=snapshot.child("State").getValue().toString();
-                    if(state.equals("Not Shipped"))
-                    {
-                        state="Order Placed";
-                    }
-                    else
-                    {
-                        state="Order Shipped";
-                    }
-                }
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError error) {
-
-            }
-        });
-    }
-
-    @Override
-    protected void onStart() {
-        super.onStart();
-        checkOrderStat();
     }
 }

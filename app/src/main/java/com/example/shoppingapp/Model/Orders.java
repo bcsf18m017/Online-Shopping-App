@@ -5,7 +5,7 @@ public class Orders {
     public Orders()
     {}
 
-    public Orders(String address, String city, String date, String name, String time, String phone, String state, String totalAmount) {
+    public Orders(String address, String city, String date, String name, String phone, String state,String time, String totalAmount) {
         Address = address;
         City = city;
         Date = date;

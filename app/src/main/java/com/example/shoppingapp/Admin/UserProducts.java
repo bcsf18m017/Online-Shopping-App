@@ -1,14 +1,14 @@
 package com.example.shoppingapp.Admin;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
-
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.shoppingapp.Model.CartItem;
 import com.example.shoppingapp.R;
@@ -24,15 +24,14 @@ public class UserProducts extends AppCompatActivity {
     private RecyclerView recyclerView;
     private DatabaseReference productRef;
     RecyclerView.LayoutManager layoutManager;
-    String receivedPhone;
+    String receivedOid;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_user_products);
 
-        receivedPhone=getIntent().getStringExtra("phone");
-        productRef= FirebaseDatabase.getInstance().getReference().child("Cart List").child("Admin View")
-                .child(receivedPhone).child("Products");
+        receivedOid=getIntent().getStringExtra("OID");
+        productRef= FirebaseDatabase.getInstance().getReference().child("OrderedProducts").child(receivedOid);
 
         recyclerView=findViewById(R.id.user_product_list);
         recyclerView.setHasFixedSize(true);
@@ -50,7 +49,6 @@ public class UserProducts extends AppCompatActivity {
         FirebaseRecyclerAdapter<CartItem, CartViewHolder>adapter=new FirebaseRecyclerAdapter<CartItem, CartViewHolder>(options) {
             @Override
             protected void onBindViewHolder(@NonNull CartViewHolder holder, int position, @NonNull CartItem model) {
-
 
                 holder.itemName.setText(model.getName());
                 holder.itemPrice.setText(model.getPrice());

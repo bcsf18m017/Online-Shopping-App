@@ -1,11 +1,5 @@
 package com.example.shoppingapp.Admin;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AlertDialog;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
-
 import android.annotation.SuppressLint;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -15,6 +9,12 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
+
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AlertDialog;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.shoppingapp.Model.Orders;
 import com.example.shoppingapp.R;
@@ -58,7 +58,7 @@ public class AdminNewOrder extends AppCompatActivity {
                     @Override
                     public void onClick(View v) {
                         Intent intent=new Intent(AdminNewOrder.this, UserProducts.class);
-                        intent.putExtra("phone",getRef(position).getKey());
+                        intent.putExtra("OID",model.getDate()+model.getTime());
                         startActivity(intent);
                     }
                 });
@@ -103,6 +103,7 @@ public class AdminNewOrder extends AppCompatActivity {
     private void removeOrder(String uid) {
 
         orderRef.child(uid).removeValue();
+        FirebaseDatabase.getInstance().getReference().child("OrderedProducts").child(uid).removeValue();
     }
 
     public static class OrdersViewHolder extends  RecyclerView.ViewHolder
@@ -112,13 +113,13 @@ public class AdminNewOrder extends AppCompatActivity {
         public Button orderDetails;
         public OrdersViewHolder(@NonNull View itemView)
         {
-                super(itemView);
-                username=itemView.findViewById(R.id.order_user_name);
-                phone=itemView.findViewById(R.id.order_phone_number);
-                total=itemView.findViewById(R.id.order_price);
-                address=itemView.findViewById(R.id.order_address);
-                dateTime=itemView.findViewById(R.id.order_date_time);
-                orderDetails=itemView.findViewById(R.id.order_details_button);
+            super(itemView);
+            username=itemView.findViewById(R.id.order_user_name);
+            phone=itemView.findViewById(R.id.order_phone_number);
+            total=itemView.findViewById(R.id.order_price);
+            address=itemView.findViewById(R.id.order_address);
+            dateTime=itemView.findViewById(R.id.order_date_time);
+            orderDetails=itemView.findViewById(R.id.order_details_button);
 
         }
     }

@@ -1,9 +1,5 @@
 package com.example.shoppingapp.Buyer;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AlertDialog;
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.app.Dialog;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -13,6 +9,10 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AlertDialog;
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.shoppingapp.R;
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -102,7 +102,7 @@ public class ResetPassword extends AppCompatActivity {
                                     public void onClick(DialogInterface dialog, int which) {
                                         if(!password.getText().toString().equals(""))
                                         {
-                                            FirebaseDatabase.getInstance().getReference().child("Users").child(ph).child("Password").setValue(password.getText().toString())
+                                            FirebaseDatabase.getInstance().getReference().child("Users").child(ph).child("password").setValue(password.getText().toString())
                                                     .addOnCompleteListener(new OnCompleteListener<Void>() {
                                                         @Override
                                                         public void onComplete(@NonNull Task<Void> task) {

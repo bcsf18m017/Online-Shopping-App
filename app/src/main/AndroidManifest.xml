@@ -40,15 +40,20 @@
         <activity
             android:name=".Buyer.ConfirmOrder"
             android:exported="false"
-            android:launchMode="singleTask" />
+            android:launchMode="singleTask"
+            android:noHistory="true"/>
         <activity
             android:name=".Buyer.Cart"
             android:exported="false"
-            android:launchMode="singleTask" />
+            android:launchMode="singleTask"
+            android:noHistory="true"
+            />
         <activity
             android:name=".Buyer.ProductDetails"
             android:exported="false"
-            android:launchMode="singleTask" />
+            android:launchMode="singleTask"
+            android:noHistory="true"/>
+
         <activity
             android:name=".Buyer.Settings"
             android:exported="false"
