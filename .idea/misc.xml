@@ -5,6 +5,7 @@
       <map>
         <entry key="..\:/Users/K9181/AndroidStudioProjects/ShoppingApp/app/src/main/res/drawable/button_shape.xml" value="0.2203125" />
         <entry key="..\:/Users/K9181/AndroidStudioProjects/ShoppingApp/app/src/main/res/drawable/input_shape.xml" value="0.2203125" />
+        <entry key="..\:/Users/K9181/AndroidStudioProjects/ShoppingApp/app/src/main/res/drawable/input_shape2.xml" value="0.12708333333333333" />
         <entry key="..\:/Users/K9181/AndroidStudioProjects/ShoppingApp/app/src/main/res/layout/activity_admin_category.xml" value="0.25" />
         <entry key="..\:/Users/K9181/AndroidStudioProjects/ShoppingApp/app/src/main/res/layout/activity_admin_home.xml" value="0.33" />
         <entry key="..\:/Users/K9181/AndroidStudioProjects/ShoppingApp/app/src/main/res/layout/activity_admin_new_order.xml" value="0.1" />
@@ -13,11 +14,13 @@
         <entry key="..\:/Users/K9181/AndroidStudioProjects/ShoppingApp/app/src/main/res/layout/activity_confirm_order.xml" value="0.2" />
         <entry key="..\:/Users/K9181/AndroidStudioProjects/ShoppingApp/app/src/main/res/layout/activity_home.xml" value="0.25" />
         <entry key="..\:/Users/K9181/AndroidStudioProjects/ShoppingApp/app/src/main/res/layout/activity_login.xml" value="0.292259083728278" />
-        <entry key="..\:/Users/K9181/AndroidStudioProjects/ShoppingApp/app/src/main/res/layout/activity_main.xml" value="0.33" />
+        <entry key="..\:/Users/K9181/AndroidStudioProjects/ShoppingApp/app/src/main/res/layout/activity_main.xml" value="0.22" />
         <entry key="..\:/Users/K9181/AndroidStudioProjects/ShoppingApp/app/src/main/res/layout/activity_maintain_products.xml" value="0.25" />
         <entry key="..\:/Users/K9181/AndroidStudioProjects/ShoppingApp/app/src/main/res/layout/activity_product_details.xml" value="0.22" />
         <entry key="..\:/Users/K9181/AndroidStudioProjects/ShoppingApp/app/src/main/res/layout/activity_reset_password.xml" value="0.20416666666666666" />
         <entry key="..\:/Users/K9181/AndroidStudioProjects/ShoppingApp/app/src/main/res/layout/activity_search_product.xml" value="0.33" />
+        <entry key="..\:/Users/K9181/AndroidStudioProjects/ShoppingApp/app/src/main/res/layout/activity_seller_login.xml" value="0.33" />
+        <entry key="..\:/Users/K9181/AndroidStudioProjects/ShoppingApp/app/src/main/res/layout/activity_seller_registration.xml" value="0.31462333825701627" />
         <entry key="..\:/Users/K9181/AndroidStudioProjects/ShoppingApp/app/src/main/res/layout/activity_settings.xml" value="0.25" />
         <entry key="..\:/Users/K9181/AndroidStudioProjects/ShoppingApp/app/src/main/res/layout/activity_signup.xml" value="0.20416666666666666" />
         <entry key="..\:/Users/K9181/AndroidStudioProjects/ShoppingApp/app/src/main/res/layout/activity_user_products.xml" value="0.20416666666666666" />
