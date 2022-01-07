@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Shopping App</string>
+    <string name="app_name">Quick Shop</string>
     <string name="slogan">Find, Discover,Choose and Buy Anything Here</string>
     <string name="mainLoginButton">Already have an account? Login</string>
     <string name="remember_me">Remember Me</string>

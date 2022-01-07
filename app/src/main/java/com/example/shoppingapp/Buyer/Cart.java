@@ -32,7 +32,7 @@ public class Cart extends AppCompatActivity {
     private RecyclerView recyclerView;
     private RecyclerView.LayoutManager layoutManager;
     private Button next;
-    private TextView total,message;
+    private TextView total;
     private String receivedPhone,receivedAddress,receivedImage,receivedName;
     int totalPrice=0;
     @Override
@@ -41,7 +41,6 @@ public class Cart extends AppCompatActivity {
         setContentView(R.layout.activity_cart);
 
         recyclerView=findViewById(R.id.cart_list);
-        message=findViewById(R.id.order_message);
         recyclerView.setHasFixedSize(true);
         layoutManager=new LinearLayoutManager(this);
         recyclerView.setLayoutManager(layoutManager);
@@ -82,17 +81,17 @@ public class Cart extends AppCompatActivity {
 
                 holder.itemName.setText(model.getName());
                 holder.itemPrice.setText(model.getPrice());
-                holder.itemQuantity.setText(model.getQuantity());
+                holder.itemQuantity.setText(model.getQuantity()+"x");
                 Picasso.get().load(model.getImage()).into(holder.itemImage);
                 int tempPrice=(Integer.parseInt(model.getPrice()))*(Integer.parseInt(model.getQuantity()));
 
                 totalPrice=totalPrice+tempPrice;
-                total.setText("Total Price ="+String.valueOf(totalPrice)+"$");
+                total.setText(String.valueOf(totalPrice));
 
                 holder.itemView.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        CharSequence choice[]=new CharSequence[]{"Edit","Remove"};
+                        CharSequence choice[]=new CharSequence[]{"Edit Quantity","Remove Item"};
                         AlertDialog.Builder builder=new AlertDialog.Builder(Cart.this);
                         builder.setTitle("Choose an option:");
                         builder.setItems(choice, new DialogInterface.OnClickListener() {
@@ -118,14 +117,9 @@ public class Cart extends AppCompatActivity {
                                         public void onComplete(@NonNull Task<Void> task) {
                                             if(task.isSuccessful())
                                             {
-                                                Toast.makeText(Cart.this, "Product Removed Successfully", Toast.LENGTH_SHORT).show();
-                                                Intent intent=new Intent(Cart.this,Home.class);
-                                                intent.putExtra("Username",receivedName);
-                                                intent.putExtra("phone",receivedPhone);
-                                                intent.putExtra("image",receivedImage);
-                                                intent.putExtra("address",receivedAddress);
-                                                startActivity(intent);
-                                                finish();
+                                            }
+                                            else {
+                                                Toast.makeText(Cart.this, "Error Removing Product Please Try Later", Toast.LENGTH_SHORT).show();
                                             }
                                         }
                                     });

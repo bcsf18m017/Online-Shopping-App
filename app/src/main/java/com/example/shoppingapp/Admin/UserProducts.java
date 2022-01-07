@@ -67,4 +67,5 @@ public class UserProducts extends AppCompatActivity {
         recyclerView.setAdapter(adapter);
         adapter.startListening();
     }
+
 }

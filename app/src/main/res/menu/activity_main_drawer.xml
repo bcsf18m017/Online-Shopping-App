@@ -15,14 +15,10 @@
             android:title="Search"
             android:iconTint="@color/white"/>
         <item
-            android:id="@+id/nav_categories"
-            android:icon="@drawable/category"
-            android:title="Categories"
-            android:iconTint="@color/white"/>
-        <item
             android:id="@+id/nav_settings"
             android:icon="@drawable/ic_baseline_settings_24"
-            android:title="Settings" android:iconTint="@color/white"/>
+            android:title="Update Profile"
+            android:iconTint="@color/white"/>
         <item
             android:id="@+id/nav_logout"
             android:icon="@drawable/logout"

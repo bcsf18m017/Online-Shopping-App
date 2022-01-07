@@ -1,6 +1,8 @@
 package com.example.shoppingapp.Buyer;
 
 import android.content.Intent;
+import android.content.IntentFilter;
+import android.net.ConnectivityManager;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -13,6 +15,7 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+import androidx.core.app.ActivityOptionsCompat;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.navigation.NavController;
@@ -22,7 +25,9 @@ import androidx.navigation.ui.NavigationUI;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.shoppingapp.Admin.AdminProductsDisplay;
 import com.example.shoppingapp.Model.Product;
+import com.example.shoppingapp.NetworkChangeListener;
 import com.example.shoppingapp.R;
 import com.example.shoppingapp.ViewHolder.ProductViewHolder;
 import com.example.shoppingapp.databinding.ActivityHomeBinding;
@@ -46,9 +51,11 @@ public class Home extends AppCompatActivity implements NavigationView.OnNavigati
     String user,phoneReceived,addressReceived,imageReceived;
     private  DatabaseReference productsRef;
     CircleImageView imageView;
+    NetworkChangeListener networkChangeListener;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
 
 
         binding = ActivityHomeBinding.inflate(getLayoutInflater());
@@ -120,6 +127,7 @@ public class Home extends AppCompatActivity implements NavigationView.OnNavigati
         else
         {
             super.onBackPressed();
+            finishAffinity();
         }
     }
 
@@ -175,14 +183,8 @@ public class Home extends AppCompatActivity implements NavigationView.OnNavigati
             startActivity(intent);
         }
 
-        else if(id==R.id.nav_categories)
-        {
-
-        }
-
         else if(id==R.id.nav_logout)
         {
-            Toast.makeText(Home.this, "Hello", Toast.LENGTH_SHORT).show();
             Paper.book().destroy();
             Intent intent=new Intent(Home.this,MainActivity.class);
             intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK| Intent.FLAG_ACTIVITY_CLEAR_TASK);
@@ -193,6 +195,8 @@ public class Home extends AppCompatActivity implements NavigationView.OnNavigati
         drawer.closeDrawer(GravityCompat.START);
         return true;
     }
+
+
 
 
     @Override
@@ -220,7 +224,8 @@ public class Home extends AppCompatActivity implements NavigationView.OnNavigati
                         intent.putExtra("image",model.getImage());
                         intent.putExtra("address",addressReceived);
                         intent.putExtra("username",user);
-                        startActivity(intent);
+                        ActivityOptionsCompat compat=ActivityOptionsCompat.makeSceneTransitionAnimation(Home.this,findViewById(R.id.trans2),"trans2");
+                        startActivity(intent,compat.toBundle());
                     }
                 });
             }

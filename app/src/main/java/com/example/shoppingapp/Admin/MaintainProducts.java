@@ -28,6 +28,7 @@ public class MaintainProducts extends AppCompatActivity {
     ImageView imageView;
     String receivedName,receivedPrice,receivedDescription,receivedImage,productID;
     private DatabaseReference ref;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

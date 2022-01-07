@@ -1,15 +1,19 @@
 package com.example.shoppingapp.Buyer;
 
+import androidx.appcompat.app.AppCompatActivity;
+
 import android.app.ProgressDialog;
 import android.content.Intent;
+import android.content.IntentFilter;
+import android.net.ConnectivityManager;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
-import android.widget.TextView;
 
-import androidx.appcompat.app.AppCompatActivity;
-
-import com.example.shoppingapp.Admin.AdminCategory;
+import com.example.shoppingapp.Admin.AdminNewOrder;
+import com.example.shoppingapp.Admin.AdminNewProduct;
+import com.example.shoppingapp.Admin.AdminProductsDisplay;
+import com.example.shoppingapp.NetworkChangeListener;
 import com.example.shoppingapp.Prevalent.Prevalent;
 import com.example.shoppingapp.R;
 
@@ -55,7 +59,7 @@ public class MainActivity extends AppCompatActivity {
             String str3=Paper.book().read("Address").toString();
            if(Paper.book().read("User").toString().equals("Admins"))
            {
-               Intent intent=new Intent(MainActivity.this, AdminCategory.class);
+               Intent intent=new Intent(MainActivity.this, AdminProductsDisplay.class);
                intent.putExtra("Username",str);
                intent.putExtra("phone",str1);
                startActivity(intent);
@@ -71,4 +75,5 @@ public class MainActivity extends AppCompatActivity {
            }
         }
     }
+
 }

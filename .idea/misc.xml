@@ -3,6 +3,45 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/K9181/AndroidStudioProjects/New folder/Online-Shopping-App/app/src/main/res/drawable/button_design.xml" value="0.2203125" />
+        <entry key="..\:/Users/K9181/AndroidStudioProjects/New folder/Online-Shopping-App/app/src/main/res/drawable/button_shape.xml" value="0.2203125" />
+        <entry key="..\:/Users/K9181/AndroidStudioProjects/New folder/Online-Shopping-App/app/src/main/res/drawable/input_shape.xml" value="0.2203125" />
+        <entry key="..\:/Users/K9181/AndroidStudioProjects/New folder/Online-Shopping-App/app/src/main/res/drawable/selector.xml" value="0.2203125" />
+        <entry key="..\:/Users/K9181/AndroidStudioProjects/New folder/Online-Shopping-App/app/src/main/res/layout/activity_admin_category.xml" value="0.20416666666666666" />
+        <entry key="..\:/Users/K9181/AndroidStudioProjects/New folder/Online-Shopping-App/app/src/main/res/layout/activity_admin_home.xml" value="0.25" />
+        <entry key="..\:/Users/K9181/AndroidStudioProjects/New folder/Online-Shopping-App/app/src/main/res/layout/activity_admin_new_order.xml" value="0.25" />
+        <entry key="..\:/Users/K9181/AndroidStudioProjects/New folder/Online-Shopping-App/app/src/main/res/layout/activity_admin_products_display.xml" value="0.18" />
+        <entry key="..\:/Users/K9181/AndroidStudioProjects/New folder/Online-Shopping-App/app/src/main/res/layout/activity_bottom_navigation.xml" value="0.20416666666666666" />
+        <entry key="..\:/Users/K9181/AndroidStudioProjects/New folder/Online-Shopping-App/app/src/main/res/layout/activity_cart.xml" value="0.25" />
+        <entry key="..\:/Users/K9181/AndroidStudioProjects/New folder/Online-Shopping-App/app/src/main/res/layout/activity_confirm_order.xml" value="0.25" />
+        <entry key="..\:/Users/K9181/AndroidStudioProjects/New folder/Online-Shopping-App/app/src/main/res/layout/activity_home.xml" value="0.20416666666666666" />
+        <entry key="..\:/Users/K9181/AndroidStudioProjects/New folder/Online-Shopping-App/app/src/main/res/layout/activity_login.xml" value="0.25" />
+        <entry key="..\:/Users/K9181/AndroidStudioProjects/New folder/Online-Shopping-App/app/src/main/res/layout/activity_main.xml" value="0.20416666666666666" />
+        <entry key="..\:/Users/K9181/AndroidStudioProjects/New folder/Online-Shopping-App/app/src/main/res/layout/activity_maintain_products.xml" value="0.22" />
+        <entry key="..\:/Users/K9181/AndroidStudioProjects/New folder/Online-Shopping-App/app/src/main/res/layout/activity_product_details.xml" value="0.292259083728278" />
+        <entry key="..\:/Users/K9181/AndroidStudioProjects/New folder/Online-Shopping-App/app/src/main/res/layout/activity_reset_password.xml" value="0.20018115942028986" />
+        <entry key="..\:/Users/K9181/AndroidStudioProjects/New folder/Online-Shopping-App/app/src/main/res/layout/activity_search_product.xml" value="0.33" />
+        <entry key="..\:/Users/K9181/AndroidStudioProjects/New folder/Online-Shopping-App/app/src/main/res/layout/activity_seller_login.xml" value="0.20416666666666666" />
+        <entry key="..\:/Users/K9181/AndroidStudioProjects/New folder/Online-Shopping-App/app/src/main/res/layout/activity_seller_registration.xml" value="0.33" />
+        <entry key="..\:/Users/K9181/AndroidStudioProjects/New folder/Online-Shopping-App/app/src/main/res/layout/activity_settings.xml" value="0.20018115942028986" />
+        <entry key="..\:/Users/K9181/AndroidStudioProjects/New folder/Online-Shopping-App/app/src/main/res/layout/activity_signup.xml" value="0.33" />
+        <entry key="..\:/Users/K9181/AndroidStudioProjects/New folder/Online-Shopping-App/app/src/main/res/layout/activity_user_products.xml" value="0.20416666666666666" />
+        <entry key="..\:/Users/K9181/AndroidStudioProjects/New folder/Online-Shopping-App/app/src/main/res/layout/app_bar_home.xml" value="0.20018115942028986" />
+        <entry key="..\:/Users/K9181/AndroidStudioProjects/New folder/Online-Shopping-App/app/src/main/res/layout/cart_item.xml" value="0.25" />
+        <entry key="..\:/Users/K9181/AndroidStudioProjects/New folder/Online-Shopping-App/app/src/main/res/layout/content_home.xml" value="0.18" />
+        <entry key="..\:/Users/K9181/AndroidStudioProjects/New folder/Online-Shopping-App/app/src/main/res/layout/fragment_gallery.xml" value="0.1" />
+        <entry key="..\:/Users/K9181/AndroidStudioProjects/New folder/Online-Shopping-App/app/src/main/res/layout/fragment_home.xml" value="0.1" />
+        <entry key="..\:/Users/K9181/AndroidStudioProjects/New folder/Online-Shopping-App/app/src/main/res/layout/internet_dialog.xml" value="0.20416666666666666" />
+        <entry key="..\:/Users/K9181/AndroidStudioProjects/New folder/Online-Shopping-App/app/src/main/res/layout/item_layout.xml" value="0.25" />
+        <entry key="..\:/Users/K9181/AndroidStudioProjects/New folder/Online-Shopping-App/app/src/main/res/layout/loading_layout.xml" value="0.22" />
+        <entry key="..\:/Users/K9181/AndroidStudioProjects/New folder/Online-Shopping-App/app/src/main/res/layout/nav_header_home.xml" value="0.20416666666666666" />
+        <entry key="..\:/Users/K9181/AndroidStudioProjects/New folder/Online-Shopping-App/app/src/main/res/layout/no_internet_dialog.xml" value="0.20153985507246377" />
+        <entry key="..\:/Users/K9181/AndroidStudioProjects/New folder/Online-Shopping-App/app/src/main/res/layout/order_layout.xml" value="0.25" />
+        <entry key="..\:/Users/K9181/AndroidStudioProjects/New folder/Online-Shopping-App/app/src/main/res/layout/spinner_layout.xml" value="0.20416666666666666" />
+        <entry key="..\:/Users/K9181/AndroidStudioProjects/New folder/Online-Shopping-App/app/src/main/res/menu/activity_main_drawer.xml" value="0.20416666666666666" />
+        <entry key="..\:/Users/K9181/AndroidStudioProjects/New folder/Online-Shopping-App/app/src/main/res/menu/home.xml" value="0.20416666666666666" />
+        <entry key="..\:/Users/K9181/AndroidStudioProjects/New folder/Online-Shopping-App/app/src/main/res/menu/menu_navigation.xml" value="0.20416666666666666" />
+        <entry key="..\:/Users/K9181/AndroidStudioProjects/New folder/Online-Shopping-App/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" value="0.1125" />
         <entry key="..\:/Users/K9181/AndroidStudioProjects/ShoppingApp/app/src/main/res/drawable/button_shape.xml" value="0.2203125" />
         <entry key="..\:/Users/K9181/AndroidStudioProjects/ShoppingApp/app/src/main/res/drawable/input_shape.xml" value="0.2203125" />
         <entry key="..\:/Users/K9181/AndroidStudioProjects/ShoppingApp/app/src/main/res/drawable/input_shape2.xml" value="0.12708333333333333" />

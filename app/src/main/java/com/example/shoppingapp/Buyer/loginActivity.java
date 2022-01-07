@@ -1,5 +1,8 @@
 package com.example.shoppingapp.Buyer;
 
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
+
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
@@ -10,10 +13,9 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-
-import com.example.shoppingapp.Admin.AdminCategory;
+import com.example.shoppingapp.Admin.AdminNewOrder;
+import com.example.shoppingapp.Admin.AdminNewProduct;
+import com.example.shoppingapp.Admin.AdminProductsDisplay;
 import com.example.shoppingapp.Model.Users;
 import com.example.shoppingapp.Prevalent.Prevalent;
 import com.example.shoppingapp.R;
@@ -42,8 +44,9 @@ public class loginActivity extends AppCompatActivity {
         login=findViewById(R.id.login);
         phone=findViewById(R.id.phoneNumber);
         password=findViewById(R.id.password);
-        forgetPassword=findViewById(R.id.forgetPassword);
         adminCheck=findViewById(R.id.adminCheckBox);
+        forgetPassword=findViewById(R.id.forgetPassword);
+
         forgetPassword.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -61,7 +64,6 @@ public class loginActivity extends AppCompatActivity {
         login.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
                 if(adminCheck.isChecked())
                 {
                     parentDBName="Admins";
@@ -70,6 +72,7 @@ public class loginActivity extends AppCompatActivity {
                 {
                     parentDBName="Users";
                 }
+
                 validateUser();
             }
         });
@@ -137,7 +140,7 @@ public class loginActivity extends AppCompatActivity {
                         }
                         else
                         {
-                            Intent intent =new Intent(loginActivity.this, AdminCategory.class);
+                            Intent intent =new Intent(loginActivity.this, AdminProductsDisplay.class);
                             startActivity(intent);
                         }
                     }

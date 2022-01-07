@@ -1,71 +1,65 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".Admin.MaintainProducts">
 
-
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:background="@color/pink"
-        android:id="@+id/rc"
-        android:layout_marginBottom="10dp"/>
+        android:layout_height="match_parent">
 
-    <ImageView
-        android:layout_width="match_parent"
-        android:layout_height="300dp"
-        android:src="@drawable/profile"
-        android:id="@+id/editProductImage"
-        android:layout_below="@+id/rc"/>
+        <de.hdodenhof.circleimageview.CircleImageView xmlns:app="http://schemas.android.com/apk/res-auto"
+            android:id="@+id/editProductImage"
+            android:layout_width="350dp"
+            android:layout_height="250dp"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="30dp"
+            android:src="@drawable/addproductimagesource" />
 
-    <EditText
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@drawable/input_shape"
-        android:layout_below="@id/editProductName"
-        android:layout_marginHorizontal="30dp"
-        android:hint="Price"
-        android:padding="15dp"
-        android:layout_marginTop="15dp"
-        android:id="@+id/editProductPrice"
-        />
-    <EditText
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@drawable/input_shape"
-        android:layout_below="@id/editProductImage"
-        android:layout_marginHorizontal="30dp"
-        android:hint="Name"
-        android:padding="15dp"
-        android:layout_marginTop="15dp"
-        android:id="@+id/editProductName"
-        />
-    <EditText
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:background="@drawable/input_shape"
-    android:layout_below="@id/editProductPrice"
-    android:layout_marginHorizontal="30dp"
-    android:hint="Description"
-    android:padding="15dp"
-    android:layout_marginTop="15dp"
-    android:id="@+id/editProductDescription"
-    />
+        <EditText
+            android:id="@+id/editProductName"
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/editProductImage"
+            android:layout_marginTop="30dp"
+            android:hint="Product Name"
+            android:inputType="textMultiLine"
+            android:padding="20dp" />
 
-    <androidx.appcompat.widget.AppCompatButton
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@drawable/button_shape"
-        android:layout_below="@id/editProductDescription"
-        android:layout_margin="30dp"
-        android:text="Update Product"
-        android:textColor="@color/white"
-        android:textSize="20dp"
-        android:id="@+id/updateProductButton"
-        />
+        <EditText
+            android:id="@+id/editProductPrice"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/editProductImage"
+            android:layout_marginLeft="5dp"
+            android:layout_marginTop="30dp"
+            android:layout_toRightOf="@id/editProductName"
+            android:hint="Product Price"
+            android:inputType="numberDecimal"
+            android:padding="20dp" />
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/editProductDescription"
+            android:inputType="textMultiLine"
+            android:layout_below="@id/editProductName"
+            android:hint="Product Description"
+            android:padding="20dp"
+            android:layout_marginTop="30dp" />
 
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/updateProductButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/editProductDescription"
+            android:layout_marginHorizontal="30dp"
+            android:layout_marginTop="70dp"
+            android:background="@color/pink"
+            android:textColor="@color/white"
+            android:text="Update Product"
+            android:textSize="23dp" />
+    </RelativeLayout>
 
-</RelativeLayout>
+</ScrollView>

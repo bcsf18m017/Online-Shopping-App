@@ -108,33 +108,32 @@ public class Settings extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 checker="clicked";
-                CropImage.activity(uri).setAspectRatio(1,1).start(Settings.this);
+                openGallery();
             }
         });
 
+    }
+    private void openGallery() {
+        Intent intent=new Intent();
+        intent.setAction(Intent.ACTION_GET_CONTENT);
+        intent.setType("image/*");
+        startActivityForResult(Intent.createChooser(intent, "Select Picture"), 1);
     }
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        if(requestCode==CropImage.CROP_IMAGE_ACTIVITY_REQUEST_CODE&&resultCode==RESULT_OK&&data!=null)
+        if(requestCode==1 && resultCode==RESULT_OK && data!=null)
         {
-            CropImage.ActivityResult result=CropImage.getActivityResult(data);
-            uri=result.getUri();
+            uri=data.getData();
             profileImageView.setImageURI(uri);
         }
         else
         {
-            Toast.makeText(Settings.this, "Error..!! Try Again", Toast.LENGTH_SHORT).show();
-            Intent intent=new Intent(Settings.this,Settings.class);
-            intent.putExtra("Username",receivedName);
-            intent.putExtra("phone",receivedPhone);
-            intent.putExtra("image",receivedImage);
-            intent.putExtra("address",receivedAddress);
-            startActivity(intent);
-            finish();
+            checker="not";
         }
     }
+
 
     private void updateOnlyUserInfo() {
         String textName=receivedName,textAddress=receivedAddress;
@@ -178,7 +177,7 @@ public class Settings extends AppCompatActivity {
 
     private void uploadImage() {
         ProgressDialog loadingBar=new ProgressDialog(this);
-        loadingBar.setTitle("Update Profile");
+        loadingBar.setTitle("Updating Profile");
         loadingBar.setMessage("Please Wait while we are updating your account");
         loadingBar.setCanceledOnTouchOutside(false);
         loadingBar.show();

@@ -20,12 +20,14 @@ import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.firebase.ui.database.FirebaseRecyclerOptions;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.rey.material.widget.CheckBox;
 import com.squareup.picasso.Picasso;
 
 public class SearchProduct extends AppCompatActivity {
 
     EditText searchText;
     Button searchButton;
+   CheckBox categoryCheck;
     RecyclerView recyclerView;
     String searchInput,user,phoneReceived,imageReceived,addressReceived;
     @Override
@@ -39,6 +41,7 @@ public class SearchProduct extends AppCompatActivity {
 
         recyclerView.setLayoutManager(new LinearLayoutManager(SearchProduct.this));
 
+        categoryCheck=findViewById(R.id.categoryCheck);
         user=getIntent().getExtras().get("username").toString();
         phoneReceived=getIntent().getExtras().get("phone").toString();
         imageReceived=getIntent().getExtras().get("image").toString();
@@ -59,8 +62,13 @@ public class SearchProduct extends AppCompatActivity {
         super.onStart();
 
         DatabaseReference ref= FirebaseDatabase.getInstance().getReference().child("Products");
+        String str="Name";
+        if(categoryCheck.isChecked())
+        {
+            str="Category";
+        }
         FirebaseRecyclerOptions<Product>options=new FirebaseRecyclerOptions.Builder<Product>()
-                .setQuery(ref.orderByChild("Name").startAt(searchInput).endAt(searchInput),Product.class).build();
+                .setQuery(ref.orderByChild(str).startAt(searchInput).endAt(searchInput),Product.class).build();
 
         FirebaseRecyclerAdapter<Product, ProductViewHolder>adapter=new FirebaseRecyclerAdapter<Product, ProductViewHolder>(options) {
             @Override

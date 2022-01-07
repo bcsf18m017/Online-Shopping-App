@@ -30,7 +30,7 @@ public class ConfirmOrder extends AppCompatActivity {
     EditText name,address,phone,city;
     Button confirmButton;String total;
     private String receivedPhone,receivedAddress,receivedImage,receivedName;
-
+    boolean check=false;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -45,6 +45,9 @@ public class ConfirmOrder extends AppCompatActivity {
         address=findViewById(R.id.shipment_address);
         city=findViewById(R.id.shipment_city);
         phone=findViewById(R.id.shipment_phone);
+
+        phone.setText(receivedPhone);
+        phone.setEnabled(false);
 
         confirmButton=findViewById(R.id.shipment_confirm_button);
         total=getIntent().getStringExtra("Total");
@@ -104,13 +107,13 @@ public class ConfirmOrder extends AppCompatActivity {
         map.put("State","Not Shipped");
         addOrderedProducts(date+time);
 
-
         orderRef.updateChildren(map).addOnCompleteListener(new OnCompleteListener<Void>() {
             @Override
             public void onComplete(@NonNull Task<Void> task) {
                 if(task.isSuccessful())
                 {
 
+                    check=true;
                     //addOrderedProducts(date+time);
                     FirebaseDatabase.getInstance().getReference().child("Cart List")
                             .child(receivedPhone).removeValue().addOnCompleteListener(new OnCompleteListener<Void>() {
@@ -149,7 +152,7 @@ public class ConfirmOrder extends AppCompatActivity {
                             temp.addValueEventListener(new ValueEventListener() {
                         @Override
                         public void onDataChange(@NonNull DataSnapshot snapshot1) {
-                            if(snapshot1.getValue()==null)
+                            if(snapshot1.getValue()==null && check)
                             {
                                 for (DataSnapshot post : snapshot.getChildren())
                                 {
@@ -168,6 +171,7 @@ public class ConfirmOrder extends AppCompatActivity {
                                     m.put("Image", arr.get(3));
                                     m.put("Discount", arr.get(2));
                                     temp.child(arr.get(6)).updateChildren(m);
+                                    check=false;
                                 }
                             }
                         }

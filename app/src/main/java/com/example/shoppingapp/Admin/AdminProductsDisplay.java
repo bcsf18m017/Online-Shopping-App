@@ -3,6 +3,7 @@ package com.example.shoppingapp.Admin;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.ActivityOptionsCompat;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -11,23 +12,29 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.example.shoppingapp.Buyer.MainActivity;
 import com.example.shoppingapp.Model.Product;
 import com.example.shoppingapp.R;
 import com.example.shoppingapp.ViewHolder.ProductViewHolder;
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.firebase.ui.database.FirebaseRecyclerOptions;
+import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.squareup.picasso.Picasso;
+
+import io.paperdb.Paper;
 
 public class AdminProductsDisplay extends AppCompatActivity {
 
     private RecyclerView recyclerView;
     RecyclerView.LayoutManager layoutManager;
     private DatabaseReference productsRef;
+    BottomNavigationView navigation;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,6 +47,40 @@ public class AdminProductsDisplay extends AppCompatActivity {
         recyclerView.setHasFixedSize(true);
         layoutManager=new LinearLayoutManager(this);
         recyclerView.setLayoutManager(layoutManager);
+
+
+        navigation=findViewById(R.id.bottom_navigation);
+        navigation.setSelectedItemId(R.id.products_nav_option);
+
+        navigation.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
+            @Override
+            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+                switch (item.getItemId())
+                {
+                    case R.id.order_nav_option:
+                        Intent intent1=new Intent(getApplicationContext(), AdminNewOrder.class);
+                        startActivity(intent1);
+                        finish();
+                        return true;
+                    case R.id.add_nav_option:
+                        Intent intent2=new Intent(getApplicationContext(), AdminNewProduct.class);
+                        startActivity(intent2);
+                        finish();
+                        return true;
+                    case R.id.products_nav_option:
+                        return true;
+                    case R.id.logout_nav_option:
+                        Paper.book().destroy();
+                        Intent intent=new Intent(AdminProductsDisplay.this,MainActivity.class);
+                        intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK| Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                        startActivity(intent);
+                        finish();
+                        return true;
+                }
+                return false;
+            }
+        });
+
     }
 
 
@@ -57,7 +98,7 @@ public class AdminProductsDisplay extends AppCompatActivity {
                     protected void onBindViewHolder(@NonNull ProductViewHolder holder, @SuppressLint("RecyclerView") int position, @NonNull Product model) {
 
                         holder.name.setText(model.getName());
-                        holder.price.setText(model.getPrice()+"$");
+                        holder.price.setText(model.getPrice());
 
                         Picasso.get().load(model.getImage()).into(holder.image);
 
@@ -79,12 +120,12 @@ public class AdminProductsDisplay extends AppCompatActivity {
                                             intent.putExtra("name",model.getName());
                                             intent.putExtra("description",model.getDescription());
                                             intent.putExtra("price",model.getPrice());
-                                            startActivity(intent);
+                                            ActivityOptionsCompat compat=ActivityOptionsCompat.makeSceneTransitionAnimation(AdminProductsDisplay.this,findViewById(R.id.recycler_view2),"trans1");
+                                            startActivity(intent,compat.toBundle());
                                         }
                                         else if(which==1)
                                         {
-                                                String pid=getRef(position).getKey();
-                                                productsRef.child(pid).removeValue();
+                                                productsRef.child(model.getDate()+model.getTime()).removeValue();
                                         }
 
                                     }

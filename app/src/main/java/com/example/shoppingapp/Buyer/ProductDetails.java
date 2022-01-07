@@ -31,10 +31,9 @@ import java.util.HashMap;
 
 public class ProductDetails extends AppCompatActivity {
 
-    FloatingActionButton cart;
     ImageView productImage;
     ElegantNumberButton counter;
-    TextView name,price,description;
+    TextView name,price,description,category;
     Button addToCart;
     ProgressDialog loadingBar;
     private String productID="",receivedPhone,receivedAddress,receivedImage,receivedName;
@@ -48,8 +47,8 @@ public class ProductDetails extends AppCompatActivity {
         productImage=findViewById(R.id.product_detail_image);
         description=findViewById(R.id.product_detail_description);
         price=findViewById(R.id.product_detail_price);
-        cart=findViewById(R.id.cart_button);
         addToCart=findViewById(R.id.add_to_cart);
+        category=findViewById(R.id.product_detail_category);
 
         loadingBar=new ProgressDialog(this);
 
@@ -107,9 +106,8 @@ public class ProductDetails extends AppCompatActivity {
                     public void onComplete(@NonNull Task<Void> task) {
                         if(task.isSuccessful())
                         {
-                            Toast.makeText(ProductDetails.this, "Added to Cart List Successfully", Toast.LENGTH_SHORT).show();
-                            Intent intent=new Intent(ProductDetails.this,Home.class);
-                            intent.putExtra("Username",receivedName);
+                            Intent intent=new Intent(ProductDetails.this,Cart.class);
+                            intent.putExtra("username",receivedName);
                             intent.putExtra("phone",receivedPhone);
                             intent.putExtra("image",receivedImage);
                             intent.putExtra("address",receivedAddress);
@@ -133,6 +131,7 @@ public class ProductDetails extends AppCompatActivity {
                     name.setText(product.getName());
                     price.setText(product.getPrice());
                     description.setText(product.getDescription());
+                    category.setText(product.getCategory());
                     Picasso.get().load(product.getImage()).into(productImage);
                 }
             }
