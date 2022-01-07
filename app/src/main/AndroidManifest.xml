@@ -20,95 +20,110 @@
             android:name=".Buyer.ResetPassword"
             android:exported="false"
             android:theme="@style/Theme.ShoppingApp.NoActionBar"
-            android:windowSoftInputMode="stateAlwaysHidden" />
+            android:windowSoftInputMode="stateAlwaysHidden"
+            android:screenOrientation="portrait"/>
         <activity
             android:name=".Admin.MaintainProducts"
             android:exported="false"
             android:launchMode="singleTask"
             android:theme="@style/Theme.ShoppingApp.NoActionBar"
-            android:windowSoftInputMode="stateAlwaysHidden" />
+            android:windowSoftInputMode="stateAlwaysHidden"
+            android:screenOrientation="portrait"/>
         <activity
             android:name=".Admin.AdminProductsDisplay"
             android:exported="false"
             android:launchMode="singleTask"
             android:theme="@style/Theme.ShoppingApp.NoActionBar"
-            android:windowSoftInputMode="stateAlwaysHidden" />
+            android:windowSoftInputMode="stateAlwaysHidden"
+            android:screenOrientation="portrait"/>
         <activity
             android:name=".Buyer.SearchProduct"
             android:exported="false"
             android:launchMode="singleTask"
             android:theme="@style/Theme.ShoppingApp.NoActionBar"
-            android:windowSoftInputMode="stateAlwaysHidden" />
+            android:windowSoftInputMode="stateAlwaysHidden"
+            android:screenOrientation="portrait"/>
         <activity
             android:name=".Admin.UserProducts"
             android:exported="false"
             android:launchMode="singleTask"
             android:theme="@style/Theme.ShoppingApp.NoActionBar"
             android:windowSoftInputMode="stateAlwaysHidden"
+            android:screenOrientation="portrait"
             />
         <activity
             android:name=".Admin.AdminNewOrder"
             android:exported="false"
             android:launchMode="singleTask"
             android:theme="@style/Theme.ShoppingApp.NoActionBar"
-            android:windowSoftInputMode="stateAlwaysHidden" />
+            android:windowSoftInputMode="stateAlwaysHidden"
+            android:screenOrientation="portrait"/>
         <activity
             android:name=".Buyer.ConfirmOrder"
             android:exported="false"
             android:launchMode="singleTask"
             android:noHistory="true"
             android:theme="@style/Theme.ShoppingApp.NoActionBar"
-            android:windowSoftInputMode="stateAlwaysHidden" />
+            android:windowSoftInputMode="stateAlwaysHidden"
+            android:screenOrientation="portrait"/>
         <activity
             android:name=".Buyer.Cart"
             android:exported="false"
             android:launchMode="singleTask"
             android:noHistory="true"
             android:theme="@style/Theme.ShoppingApp.NoActionBar"
-            android:windowSoftInputMode="stateAlwaysHidden" />
+            android:windowSoftInputMode="stateAlwaysHidden"
+            android:screenOrientation="portrait"/>
         <activity
             android:name=".Buyer.ProductDetails"
             android:exported="false"
             android:launchMode="singleTask"
             android:noHistory="true"
             android:theme="@style/Theme.ShoppingApp.NoActionBar"
-            android:windowSoftInputMode="stateAlwaysHidden" />
+            android:windowSoftInputMode="stateAlwaysHidden"
+            android:screenOrientation="portrait"/>
         <activity
             android:name=".Buyer.Settings"
             android:exported="false"
             android:launchMode="singleTask"
             android:theme="@style/Theme.ShoppingApp.NoActionBar"
-            android:windowSoftInputMode="stateAlwaysHidden" />
+            android:windowSoftInputMode="stateAlwaysHidden"
+            android:screenOrientation="portrait"/>
         <activity
             android:name=".Buyer.Home"
             android:exported="false"
             android:label="@string/title_activity_home"
             android:theme="@style/Theme.ShoppingApp.NoActionBar"
-            android:windowSoftInputMode="stateAlwaysHidden" />
+            android:windowSoftInputMode="stateAlwaysHidden"
+            android:screenOrientation="portrait"/>
         <activity
             android:name=".Admin.AdminNewProduct"
             android:exported="false"
             android:launchMode="singleTask"
             android:windowSoftInputMode="adjustPan|stateAlwaysHidden"
-            android:theme="@style/Theme.ShoppingApp.NoActionBar" />
+            android:theme="@style/Theme.ShoppingApp.NoActionBar"
+            android:screenOrientation="portrait"/>
         <activity
             android:name=".Buyer.signupActivity"
             android:exported="false"
             android:launchMode="singleTask"
             android:theme="@style/Theme.ShoppingApp.NoActionBar"
-            android:windowSoftInputMode="stateAlwaysHidden" />
+            android:windowSoftInputMode="stateAlwaysHidden"
+            android:screenOrientation="portrait"/>
         <activity
             android:name=".Buyer.loginActivity"
             android:exported="false"
             android:launchMode="singleTask"
             android:theme="@style/Theme.ShoppingApp.NoActionBar"
-            android:windowSoftInputMode="stateAlwaysHidden" />
+            android:windowSoftInputMode="stateAlwaysHidden"
+            android:screenOrientation="portrait"/>
         <activity
             android:name=".Buyer.MainActivity"
             android:exported="true"
             android:launchMode="singleTask"
             android:theme="@style/Theme.ShoppingApp.NoActionBar"
-            android:windowSoftInputMode="stateAlwaysHidden" >
+            android:windowSoftInputMode="stateAlwaysHidden"
+            android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -118,7 +133,8 @@
         <activity
             android:name="com.theartofdev.edmodo.cropper.CropImageActivity"
             android:theme="@style/Theme.ShoppingApp.NoActionBar"
-            android:windowSoftInputMode="stateAlwaysHidden" />
+            android:windowSoftInputMode="stateAlwaysHidden"
+            android:screenOrientation="portrait"/>
     </application>
 
 </manifest>
